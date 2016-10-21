@@ -1,68 +1,117 @@
-# ruby-getting-started
-
-A barebones Rails app, which can easily be deployed to Heroku.
-
-This application support the [Getting Started with Ruby on Heroku](https://devcenter.heroku.com/articles/getting-started-with-ruby) article - check it out.
-
-## Running Locally
-
-Make sure you have Ruby installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
-
-```sh
-$ git clone git@github.com:heroku/ruby-getting-started.git
-$ cd ruby-getting-started
-$ bundle install
-$ bundle exec rake db:create db:migrate
-$ heroku local
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku run rake db:migrate
-$ heroku open
-```
-
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Docker
-
-The app can be run and tested using the [Heroku Docker CLI plugin](https://devcenter.heroku.com/articles/introduction-local-development-with-docker).
-
-Make sure the plugin is installed:
-
-    heroku plugins:install heroku-docker
-
-Configure Docker and Docker Compose:
-
-    heroku docker:init
-
-And run the app locally:
-
-    docker-compose up web
-
-The app will now be available on the Docker daemon IP on port 8080.
-
-To work with the local database and do migrations, you can open a shell:
-
-    docker-compose run shell
-    bundle exec rake db:migrate
-
-You can also use Docker to release to Heroku:
-
-    heroku create
-    heroku docker:release
-    heroku open
-
-## Documentation
-
-For more information about using Ruby on Heroku, see these Dev Center articles:
-
-- [Ruby on Heroku](https://devcenter.heroku.com/categories/ruby)
-
+Group 15 - Project Proposal
+GroupIn
+Group Meeting Overview + Intro
+Our group decided to use a message group on WeChat as the main source of
+communication. Apart from that, we will have group meetings scheduled on Mondays after
+class. Our first group meeting discussed several viable ideas for the web application and
+possible APIs that could be incorporated into the project. We decided on one idea that we all
+agreed upon. We believe that this project will help facilitate and create new opportunities for
+social interactions in SFU. Thus, we present “GroupIn” as the product for this proposal.
+“GroupIn” is a web application that facilitates group activities amongst SFU students.
+Why GroupIn? - The Problem Stated
+The problem we are focusing is the inadequate amount of social interactions caused by
+schedule conflicts amongst fellow students. Students who seek companionships during school
+days may not always have friends around to social with, and meeting new friends who have the
+same interest and available free time can be difficult. The difficulty is that while they would like
+to reach out, the risk of rejections or negative judgements minimize their incentives interact with
+unfamiliar students. The lack of peer-to-peer interactions need to be resolved to benefit students
+and the school itself; more interactions are likely to result in innovative productions.
+Currently, there are many platforms that allows people to participate in events and
+interact with others, but they have their limitations. Social media like Facebook or Twitter
+already have the ability to create event pages, but are generally limited by only being seen by
+people who are already friends. Although SFU clubs and Simplicity promote activities based on
+theme and time, they do not serve the basic needs of students. Perhaps the student just wants
+another fellow student to study with, eat with, or exercise with to ease off the loneliness during
+school days because his/her friends do not have school on that day. Plenty of limitations exist
+on other platforms, thus “GroupIn” is presented as a specialized solution for such problem.
+Why GroupIn? - The Project Description and Target Audience Description
+“GroupIn” is an online platform that allows SFU students to startup activities and post
+them online to gather more participants. The purpose is to find other students who are
+interested in doing the same thing. It could be simple as studying together in the library or
+getting lunch together in the cafeteria. “GroupIn” pulls off the pressure from students as the
+event organizers. Rather, they are just “activity idea providers” that are willing to participate in
+the mentioned activity. All users are not obliged to participate in each activity, they can join
+individual activities based on their interests. “GroupIn” eliminates the risk of rejections or being
+judged because all members in the activity group are interested in joining and meeting. As the
+result, participating members are able to make friendship with people that they have something
+in common with. “GroupIn” can encourage student to come to school more often, and reduce
+the chance of skipping class.
+“GroupIn” mainly serves SFU students. The targeted audience for “GroupIn” include
+SFU students who want make new friends with common interests and have available time slots
+to social with. On the side, in order to profit, business owners can contact admins to postGroup 15 - Project Proposal
+advertisements on the site to attract students to startup activities at their stores. “GroupIn” is in
+general a service application for SFU students to form and join activities of their choices.
+Project Scope
+Our project’s main feature is to form interest activity groups that welcome fellow students
+to join when they wish to do so. In order to construct such feature many other user friendly
+features need to be implemented as well.
+When users visit our site, they can view all the activity postings. However, to be able to
+startup or join an activity, users must sign up with their SFU email accounts and complete the
+email confirmation process. After clicking onto the link from the confirmation email sent to them,
+they will be redirected to their personal pages. They will then be asked to have the option to link
+to their Facebook/Twitter connect with Sharing on Facebook/ REST APIs. The other option is to
+access personal pages by using the user login. On the personal page, users can view all the
+activities they joined as well as have the option to leave the activities. A calendar/time API will
+be provided for convenience for the user to compare to their personal schedule. Note that
+creators do not have the authority to manage participants, they can edit the posting or transfer
+the posting to another member if they want to leave the activity group. On the main page, there
+will be an activity startup button to direct user to form their own activities. There will also be the
+option to browse activities posted by other users. Search and filter features will be provided to
+reduce activity finding time.
+In addition to the basic involvement features, we will also provide several additional user
+friendly features to enhance user experience. A toolbar will be implemented for easier site
+navigation, the toolbar provides different functions to different types of users. Users can use the
+toolbar to create new activity, access other activity categories, their personal pages and etc.
+Business owners can use the toolbar to find admins contact information for advertising. Admins
+can use the toolbar to post advertisements. For the individual activity groups, users will be
+provided with a messaging service for better communication amongst group members. For the
+users, they will be able to form communities, where all activity postings are only available to
+community members with qualifications. Plus, users can use the commenting service to rate
+other participating members and their overall experience after the joined activity finishes. A
+report system is implemented to restrict negative attitudes within “GroupIn”. Admins can view
+reports, and they have the option to give warnings to the reported users, to remove the reported
+users, or to delete the reported comments/postings. As we further develop our system, we
+would like to implement more features. Features like surveys or statistical charts to display
+favourite activities and most preferred activity times. An automatic advertising system that
+charges business owners, censors advertised materials, and posts good advertisements.
+This project is based on the idea of social media, but it stresses more on social media as
+a tool to lead to real-life friendships and promote more student interaction. Communication is
+only there to help enhance user experience. “GroupIn” focuses more on the activity formations
+as its main feature.Group 15 - Project Proposal
+Application Usages + Rules (Epics)
+1. Users can sign up or login to use the features
+All users must be SFU students with an available @sfu.ca domain email address to sign up.
+Once signed up, they have to confirm their email address via the confirmation email sent to
+them. After confirmation, they are able to access the features such as create/ join/ exit activities.
+Calendar API will be available on users personal page for them to manage activities dates and
+times. Facebook/ Twitter APIs will be provided if users want to link their account to share
+statuses.
+2. Users can participate in activities
+Upon joining the system, users will need to sign the agreement that declares “GroupIn”’s sole
+responsibility is to provide the platform and manage the platform. Users voluntarily form and join
+activities. The successful occurrence of the join activity depends on all members who joined. A
+creator can use the startup activity button to fill up the basic activity description form to post the
+activity. He/she can decide on the title, theme, time, location and number of participants.
+However, the creator can transfer leadership of the activity to another participant. The main
+purpose of the platform is to find other people who are also interested in doing such activity to
+social or work together and make the activity happen. Users use the posted activity group to
+discuss details. As previously mentioned, users can exit the activity if they cannot show up due
+to conflicting issues. If the creator exits the activity, the ownership gets transferred to another
+user who joined the activity. If the creator leaves the activity and no one else has joined, then
+the activity will be deleted. Once the activity’s scheduled time has passed, the activity will be
+archived.
+3. Users can rate and comment on past joined activities
+Users can comment on group members’ pages or the joined activity groups. All active groups
+will remain posted. Past activity groups will be available to view in the archive category.
+Comments will be available on activity group pages or user’s personal pages. The rating
+function is only available for activities. Negative comments can be reported and deleted by an
+admin upon review and request.
+4. Business owners can contact admins without an account
+Business owners do not necessarily have available SFU emails. They can fill up the request
+form to contact admins directly in order to post advertisements. They can access the request
+form from the toolbar. This will be the main source of revenue.
+5. Admins will manage advertisement and report requests
+Admins will have a request management page. All requests will be there for review. If the admin
+approves the request, he/she will post the advertisement. Admins also have the authorization to
+create, modify, and delete posts. Negative attitudes and inappropriate materials will be filtered
+out by the admins. Negative users can be deleted from the system by admins.Group 15 - Project Proposal
