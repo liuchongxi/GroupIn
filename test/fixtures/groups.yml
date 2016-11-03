@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  time: 2016-11-03 15:24:24
+  activity_type: MyString
+  location: MyString
+  group_owner: MyString
+  member1: MyString
+  member2: MyString
+  member3: MyString
+  member4: MyString
+  description: MyString
+
+two:
+  name: MyString
+  time: 2016-11-03 15:24:24
+  activity_type: MyString
+  location: MyString
+  group_owner: MyString
+  member1: MyString
+  member2: MyString
+  member3: MyString
+  member4: MyString
+  description: MyString
