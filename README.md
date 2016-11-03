@@ -115,3 +115,4 @@ Admins will have a request management page. All requests will be there for revie
 approves the request, he/she will post the advertisement. Admins also have the authorization to
 create, modify, and delete posts. Negative attitudes and inappropriate materials will be filtered
 out by the admins. Negative users can be deleted from the system by admins.Group 15 - Project Proposal
+
