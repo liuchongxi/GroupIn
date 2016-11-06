@@ -31,4 +31,5 @@ class UserTest < ActiveSupport::TestCase
   @user.password = @user.password_confirmation = "a" * 10
   assert @user.password_digest!=nil?
   end
+  
 end
