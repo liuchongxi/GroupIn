@@ -18,12 +18,17 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "password should have a minimum length" do
-  @user.password = @user.password_confirmation = "a" * 6
+  @user.password = @user.password_confirmation = "a" * 4
   assert_not @user.valid?
   end
 
   test "password should have a maximum length" do
   @user.password = @user.password_confirmation = "a" * 11
   assert_not @user.valid?
+  end
+
+  test "should have value for password_digest" do
+  @user.password = @user.password_confirmation = "a" * 10
+  assert @user.password_digest!=nil?
   end
 end
