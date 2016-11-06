@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104012705) do
+ActiveRecord::Schema.define(version: 20161106214424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,51 +31,6 @@ ActiveRecord::Schema.define(version: 20161104012705) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "heightunits", force: :cascade do |t|
-    t.string   "htype"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "people", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "things", force: :cascade do |t|
-    t.string   "tname"
-    t.text     "description"
-    t.integer  "person_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "tokimons", force: :cascade do |t|
-    t.string   "toname"
-    t.integer  "weight"
-    t.integer  "height"
-    t.integer  "fly"
-    t.integer  "fight"
-    t.integer  "fire"
-    t.integer  "water"
-    t.integer  "electric"
-    t.integer  "ice"
-    t.integer  "total"
-    t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "trainers", force: :cascade do |t|
-    t.string   "trname"
-    t.integer  "level"
-    t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -86,12 +41,7 @@ ActiveRecord::Schema.define(version: 20161104012705) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
-  end
-
-  create_table "weightunits", force: :cascade do |t|
-    t.string   "wtype"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "remember_digest"
   end
 
   create_table "widgets", force: :cascade do |t|
