@@ -1,102 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>GroupIN</title>
-<link rel="stylesheet" type="text/css" href="application.css">
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <!--<%= stylesheet_link_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' %> -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <!--<%= javascript_include_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
-  <%= csrf_meta_tags %> -->
-</head>
+  
+  <head>
+    <title>GroupIN | <%= @page_title || "Welcome" %></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+
 
 <body>
-
-<H1>GroupIN</H1>
-
-<p align="right">
-<button class="sign">Sign Up</button>
-<button class="sign">Sign In</button>
-</p>
-
-<nav>
-
-
-    <div class="nav">
-      <ul>
-        <li class="home"><a href="#">Home</a></li>
-
-        <li class="redirects"><a href="#">Redirect</a>
-          <ul>
-            <li><a href="#">Category 1</a></li>
-            <li><a href="#">Category 2</a></li>
-            <li><a href="#">Category 3</a></li>
-          </ul>
-        </li>
-
-        <li class="PP"><a href="#">P.Page</a>
-
-        <li class="AD"><a href="#">Ad Request</a></li>
-
-        <li class="news"><a href="#">About</a>
-          <ul>
-            <li><a href="#">Site Info</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-        </li>
-
-
-      </ul>
-    </div>
-  </header>
-
-</nav>
-
-</body>
-
-<!--<nav class="navbar navbar-inverse">
-
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">GroupIN</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Site Redirect
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Category 1</a></li>
-          <li><a href="#">Category 2</a></li>
-          <li><a href="#">Category 3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Personal Page</a></li>
-      <li><a href="#">Ad Request</a></li>
-
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">About
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Site Info</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </li>
-
-    </ul>
+  <!-- Header -->
+  <div id="header">
+    <h1>GroupIN</h1>
+    <p align="right">
+    <%= link_to("Sign IN","#", :class => 'Sign')%>
+    <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
+    </p>
   </div>
 
-</nav> -->
+  <!-- Navigation -->
+  <nav>
+    <div id="navigation">
+      <ul>
+        <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
+        <li><%= link_to("Category","#", :class => 'NavButtonL1')%>
+          <ul>
+            <li><%= link_to("Category 1","#", :class => 'NavButtonL2')%></li>
+            <li><%= link_to("Category 2","#", :class => 'NavButtonL2')%></li>
+            <li><%= link_to("Category 3","#", :class => 'NavButtonL2')%></li>
+          </ul>
+        </li>
+        <!-- <li class="PP"><a href="#">P.Page</a> -->
+        <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
+        <li><%= link_to("About Us","#", :class => 'NavButton')%>
+          <ul>
+            <li><%= link_to("Site Info","#", :class => 'NavButtonL1')%></li>
+            <li><%= link_to("Contact","#", :class => 'NavButtonL1')%></li>
+            <li><%= link_to("Help","#", :class => 'NavButtonL1')%></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- Main -->
+  <div id="main">
+    <% if !flash[:notice].blank? %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
 
+    <div id="content">
+      <%= yield %>
+    </div>
+      
+  </div>
 
-
-
-
-
-
-<%= yield %>
+  <!-- Footer -->
+  <div id="footer">
+    <p id="copyright">&copy; Simon Fraser University | CMPT276 Group15</p>
+  </div>
 
 </body>
+
 </html>
