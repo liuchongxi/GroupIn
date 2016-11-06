@@ -1,0 +1,17 @@
+
+*** These modified files were found in JOE when it aborted on Sat Nov  5 23:02:28 2016
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/home/xta13/sfuhome/cmpt276/project/.git/MERGE_MSG
+
+*** File '/home/xta13/sfuhome/cmpt276/project/.git/MERGE_MSG'
+q
+
+Merge https://git.heroku.com/mysterious-sands-95048
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.

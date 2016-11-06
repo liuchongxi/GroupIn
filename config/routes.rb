@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :users
   resources :widgets
+  get  '/signup',  to: 'users#new'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'welcome#index'
-
+  match ':controller(/:action(/:id))', :via=>[:get, :post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
