@@ -4,6 +4,7 @@ ruby '2.2.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
+gem 'bcrypt', '3.1.11'
 gem 'pg'
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
