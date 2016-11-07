@@ -22,13 +22,18 @@ module SessionsHelper
     end
   end
 
+#is there a user logged in?
+  def logged_in?
+    !loggedin_user.nil?
+  end
+
   def forget_user(user)
     user.forget_user
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
 
-  def logging_out(user)
+  def logging_out
     forget_user(loggedin_user)
     session.delete(:user_id)
     @loggedin_user = nil
