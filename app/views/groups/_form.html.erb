@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required=>'r' %>
   </div>
   <div class="field">
     <%= f.label :time %><br>
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :activity_type %><br>
-    <%= f.text_field :activity_type %>
+    <%= f.select :activity_type ,["sports", "food", "study"], :required=> 'r'%>
   </div>
   <div class="field">
     <%= f.label :location %><br>
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :group_owner %><br>
-    <%= f.text_field :group_owner %>
+    <%= f.text_field :group_owner, :required=>'r' %>
   </div>
   <div class="field">
     <%= f.label :member1 %><br>

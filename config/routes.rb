@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'about_us/site_info'
+
+  get 'about_us/contact'
+
+  get 'about_us/FAQ'
+
   get 'sessions/new'
 
   resources :groups
@@ -8,7 +14,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
