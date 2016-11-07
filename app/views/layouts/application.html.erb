@@ -13,10 +13,10 @@
     <h1>GroupIN</h1>
     <p align="right">
       <% if logged_in? %>
-        <%= link_to("Sign OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
+        <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
         <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
       <% else %>
-        <%= link_to("Sign IN",'login', :class => 'Sign')%>
+        <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
         <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
       <% end %>
     </p>
