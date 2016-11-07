@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'about_us/site_info'
+
+  get 'about_us/contact'
+
+  get 'about_us/FAQ'
+
   get 'sessions/new'
 
   resources :groups

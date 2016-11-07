@@ -38,9 +38,9 @@
         <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
         <li><%= link_to("About Us","#", :class => 'NavButton')%>
           <ul>
-            <li><%= link_to("Site Info","#", :class => 'NavButtonL1')%></li>
-            <li><%= link_to("Contact","#", :class => 'NavButtonL1')%></li>
-            <li><%= link_to("FAQ","#", :class => 'NavButtonL1')%></li>
+            <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
+            <li><%= link_to("Contact",{:controller => 'about_us', :action =>'contact'}, :class => 'NavButtonL1')%></li>
+            <li><%= link_to("FAQ",{:controller => 'about_us', :action =>'FAQ'},:class => 'NavButtonL1')%></li>
           </ul>
         </li>
       </ul>
