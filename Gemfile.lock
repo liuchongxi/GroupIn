@@ -144,11 +144,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-  bcrypt-ruby
-=======
   bcrypt (= 3.1.11)
->>>>>>> c6dd8328c7d6299e86f0675f6e68b8a6dfb3dbaa
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
