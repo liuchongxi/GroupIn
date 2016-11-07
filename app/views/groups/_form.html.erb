@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :activity_type %><br>
-    <%= f.text_field :activity_type %>
+    <%= f.select :activity_type ,["sports", "food", "study"], :required=> 'r'%>
   </div>
   <div class="field">
     <%= f.label :location %><br>
