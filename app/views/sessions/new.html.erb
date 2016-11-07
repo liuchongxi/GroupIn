@@ -1,6 +1,8 @@
 <%= form_for(:session, url: login_path) do |f| %>
   <h1>Login</h1>
+  <div class="errormessage">
   <%= flash.now[:error]%>
+  </div>
   <div class="wholetext">
     <%= f.label :email %>
     <div class="field">
