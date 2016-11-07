@@ -1,5 +1,9 @@
 
 <div id="images">
 <img><%= link_to(image_tag("view.png"), {:controller => 'groups', :action => 'index'}, :class => "tag") %></img>
-<img><%= link_to(image_tag("create.png"),{:controller => 'groups', :action => 'new'}, :class => "tag") %></img>
+<% if logged_in? %>
+  <img><%= link_to(image_tag("create.png"),{:controller => 'groups', :action => 'new'}, :class => "tag") %></img>
+<% else %>
+  <img><%= link_to(image_tag("create.png"),{:controller => 'sessions', :action => 'new'}, :class => "tag") %></img>
+<% end %>
 </div>
