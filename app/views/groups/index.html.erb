@@ -32,10 +32,12 @@
         <td><%= group.member3 %></td>
         <td><%= group.member4 %></td> -->
         <td><%= group.description %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Show', group, {:style=>'color:blue;', :class => "css_class"} %></td>
+        <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
+        <% if logged_in?%>
         <% if loggedin_user.admin? %>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <% end %>
       </tr>
     <% end %>
@@ -44,4 +46,4 @@
 
 <br>
 
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'New Group', new_group_path, {:style=>'color:blue;', :class => "css_class"} %>

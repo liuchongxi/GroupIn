@@ -30,8 +30,8 @@
   <%= @user.major %>
 </p>
 
-<p><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<!-- <p><%= link_to 'Destroy', @user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
+<%= link_to 'Back', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
