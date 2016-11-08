@@ -27,6 +27,11 @@ module SessionsHelper
     !loggedin_user.nil?
   end
 
+  # def loggedin_user?(user)
+  #     user == loggedin_user
+  # end
+
+
   def forget_user(user)
     user.forget_user
     cookies.delete(:user_id)

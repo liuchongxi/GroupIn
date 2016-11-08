@@ -24,9 +24,13 @@
         <td><%= user.password %></td>
         <td><%= user.gender %></td>
         <td><%= user.major %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user,{:style=>'color:blue;', :class => "css_class"} %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), {:style=>'color:blue;', :class => "css_class"}  %></td>
+        <% if logged_in?%>
+        <% if loggedin_user.admin? %>
+        <td><%= link_to 'Destroy', user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, {:style=>'color:blue;', :class => "css_class"}%>
