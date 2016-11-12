@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <%= form_for(@group) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
@@ -25,33 +26,35 @@
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, :required=>'r' %>
   </div>
   <div class="field">
     <%= f.label :group_owner %><br>
-    <%= f.text_field :group_owner, :required=>'r' %>
+    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+    <%= f.select :group_owner,[fullname], :required=>'r' %>
   </div>
   <div class="field">
-    <%= f.label :member1 %><br>
+    <%= f.label :member1 %>(Optional)<br>
     <%= f.text_field :member1 %>
   </div>
   <div class="field">
-    <%= f.label :member2 %><br>
+    <%= f.label :member2 %>(Optional)<br>
     <%= f.text_field :member2 %>
   </div>
   <div class="field">
-    <%= f.label :member3 %><br>
+    <%= f.label :member3 %>(Optional)<br>
     <%= f.text_field :member3 %>
   </div>
   <div class="field">
-    <%= f.label :member4 %><br>
+    <%= f.label :member4 %>(Optional)<br>
     <%= f.text_field :member4 %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :required=>'r'%>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<%end%>

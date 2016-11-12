@@ -1,3 +1,5 @@
+<% if logged_in?%>
+<% if loggedin_user.admin? || @user.id==loggedin_user.id %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,10 +17,10 @@
   <%= @user.email %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Password:</strong>
   <%= @user.password %>
-</p>
+</p> -->
 
 <p>
   <strong>Gender:</strong>
@@ -34,4 +36,12 @@
 
 
 <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
-<%= link_to 'Back', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+<%if loggedin_user.admin?%>
+<%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+<%end%>
+<%else%>
+<p style="color:red; font-size:200;"> You do not have access for this page</p>
+<%end%>
+<%else%>
+<p style="color:red; font-size:200;"> Please log in before you view your personal page</p>
+<%end%>

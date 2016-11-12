@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'category/sports'
+
+  get 'category/food'
+
+  get 'category/study'
+
   get 'about_us/site_info'
 
   get 'about_us/contact'

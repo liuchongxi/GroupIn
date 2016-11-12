@@ -59,7 +59,7 @@ a {
   transition: .3s background-color;
 }
 
-a.Sign:hover {
+a:hover {
   background-color: #80dfff;
 }
 

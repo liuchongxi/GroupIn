@@ -1,6 +1,16 @@
-<h1>Editing User</h1>
+<% if logged_in?%>
+ <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
+  <h1>Editing User</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @user, {:style=>'color:blue;', :class => "css_class"} %> |
-<%= link_to 'Back', users_path, {:style=>'color:blue;', :class => "css_class"} %>
+  <%= link_to 'Show', @user, {:style=>'color:blue;', :class => "css_class"} %> |
+  <%if loggedin_user.admin?%>
+  <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+  <%end%>
+ <%else%>
+ <p style="color:red; font-size:200;"> You do not have access for this page</p>
+ <%end%>
+<%else%>
+<p style="color:red; font-size:200;"> Please log in before you edit your personal page</p>
+<%end%>

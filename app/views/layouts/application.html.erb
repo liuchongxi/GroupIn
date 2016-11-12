@@ -13,8 +13,10 @@
   <!-- Header -->
   <div id="header">
     <h1>GroupIN</h1>
-    <p align="right">
+    <p align="right" style="color:blue;">
       <% if logged_in? %>
+        logged in as
+        <%= loggedin_user.email%>
         <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
         <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
       <% else %>
@@ -31,9 +33,9 @@
         <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
         <li><%= link_to("Category","#", :class => 'NavButtonL1')%>
           <ul>
-            <li><%= link_to("Sports","#", :class => 'NavButtonL2')%></li>
-            <li><%= link_to("Food","#", :class => 'NavButtonL2')%></li>
-            <li><%= link_to("Study","#", :class => 'NavButtonL2')%></li>
+            <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
+            <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
+            <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
           </ul>
         </li>
         <!-- <li class="PP"><a href="#">P.Page</a> -->
