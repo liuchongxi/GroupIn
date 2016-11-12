@@ -33,9 +33,9 @@
         <td><%= group.member4 %></td> -->
         <td><%= group.description %></td>
         <td><%= link_to 'Show', group, {:style=>'color:blue;', :class => "css_class"} %></td>
-        <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
         <% if logged_in?%>
-        <% if loggedin_user.admin? %>
+        <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+        <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
         <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         <% end %>

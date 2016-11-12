@@ -50,6 +50,9 @@
   <%= @group.description %>
 </p>
 <!-- <p><%= link_to 'Destroy', @group, method: :delete,:style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
-
-<%= link_to 'Edit', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}  %> |
+<% if logged_in?%>
+<% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
+  <%= link_to 'Edit', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}  %> |
+<%end%>
+<%end%>
 <%= link_to 'Back', groups_path, {:style=>'color:blue;', :class => "css_class"}  %>
