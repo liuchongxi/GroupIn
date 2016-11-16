@@ -1,5 +1,4 @@
 <% if logged_in?%>
-<% if loggedin_user.admin? || @user.id==loggedin_user.id %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -34,13 +33,11 @@
 
 <!-- <p><%= link_to 'Destroy', @user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
 
-
+<% if loggedin_user.admin? || @user.id==loggedin_user.id %>
 <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
 <%if loggedin_user.admin?%>
 <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
 <%end%>
-<%else%>
-<p style="color:red; font-size:200%;"> You do not have access for this page</p>
 <%end%>
 <%else%>
 <p style="color:red; font-size:200%;"> Please log in before you view your personal page</p>
