@@ -1,3 +1,4 @@
+<% if logged_in?%>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,10 +16,10 @@
   <%= @user.email %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Password:</strong>
   <%= @user.password %>
-</p>
+</p> -->
 
 <p>
   <strong>Gender:</strong>
@@ -32,6 +33,12 @@
 
 <!-- <p><%= link_to 'Destroy', @user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
 
-
+<% if loggedin_user.admin? || @user.id==loggedin_user.id %>
 <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
-<%= link_to 'Back', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+<%if loggedin_user.admin?%>
+<%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+<%end%>
+<%end%>
+<%else%>
+<p style="color:red; font-size:200%;"> Please log in before you view your personal page</p>
+<%end%>

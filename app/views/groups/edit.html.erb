@@ -1,6 +1,14 @@
+<% if logged_in? %>
+<% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
 <h1>Editing Group</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @group, {:style=>'color:blue;', :class => "css_class"}%> |
 <%= link_to 'Back', groups_path, {:style=>'color:blue;', :class => "css_class"} %>
+<%else%>
+<p style="color:red;font-size:200%;"> You do not have access to editing this group</p>
+<%end%>
+<%else%>
+<p style="color:red;font-size:200%;"> Please log in before editing group</p>
+<%end%>

@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Listing Groups</h1>
+<h1> Study Groups</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Time</th>
-      <th>Activity type</th>
+      <!-- <th>Activity type</th> -->
       <th>Location</th>
       <th>Group owner</th>
       <!-- <th>Member1</th>
@@ -21,10 +21,11 @@
 
   <tbody>
     <% @groups.each do |group| %>
+    <% if group.activity_type== "study"%>
       <tr>
         <td><%= group.name %></td>
         <td><%= group.time %></td>
-        <td><%= group.activity_type %></td>
+        <!-- <td><%= group.activity_type %></td> -->
         <td><%= group.location %></td>
         <td><%= group.group_owner %></td>
         <!-- <td><%= group.member1 %></td>
@@ -32,18 +33,19 @@
         <td><%= group.member3 %></td>
         <td><%= group.member4 %></td> -->
         <td><%= group.description %></td>
-        <td><%= link_to 'Show', group, {:style=>'color:blue;', :class => "css_class"} %></td>
-        <% if logged_in?%>
-        <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
-        <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
+        <td><%= link_to 'More detail', group, {:style=>'color:blue;', :class => "css_class"} %></td>
+        <!-- <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td> -->
+        <!-- <% if logged_in?%>
+        <% if loggedin_user.admin? %>
         <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <% end %>
+        <% end %> -->
       </tr>
+    <%end%>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Group', new_group_path, {:style=>'color:blue;', :class => "css_class"} %>
+ <!-- <%= link_to 'New Group', new_group_path, {:style=>'color:blue;', :class => "css_class"} %> -->
