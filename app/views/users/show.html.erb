@@ -35,8 +35,15 @@
 <% if logged_in?%>
   <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
     <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
+    <p style="font-size:150%;"> <br>Here is all the groups you own</p>
     <% @user.groups.each do |group| %>
-    <p><%= link_to 'View My Group', group, {:style=>'color:blue;', :class => "css_class"}%></p>
+    <p><%= link_to 'View Group you own', group, {:style=>'color:blue;', :class => "css_class"}%></p>
+    <% end %>
+    <p style="font-size:150%;"> <br>Here is all the groups you joined</p>
+    <% @group.each do |grou| %>
+      <% if grou.member1id==@user.id || grou.member2id==@user.id ||grou.member3id==@user.id ||grou.member4id==@user.id%>
+        <p><%= link_to 'View Group you joined', grou, {:style=>'color:blue;', :class => "css_class"}%></p>
+      <%end%>
     <% end %>
     <%if loggedin_user.admin?%>
       <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
