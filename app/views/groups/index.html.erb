@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Groups</h1>
+<h1>Here is all the groups, you can select the ones you like :p </h1>
 
 <table>
   <thead>
@@ -34,10 +34,16 @@
         <td><%= group.description %></td>
         <td><%= link_to 'Show', group, {:style=>'color:blue;', :class => "css_class"} %></td>
         <% if logged_in?%>
-        <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
-        <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+          <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+            <td><%= link_to 'Edit the group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
+            <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
+          <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
+            <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
+              <td><%= link_to 'Join this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
+            <%end%>
+          <%else%>
+            <td><%= link_to 'Quit this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

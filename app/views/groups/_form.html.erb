@@ -29,11 +29,10 @@
     <%= f.text_field :location, :required=>'r' %>
   </div>
   <div class="field">
-    <%= f.label :group_owner %><br>
     <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
-    <%= f.select :group_owner,[fullname], :required=>'r' %>
+    <%= f.hidden_field :group_owner, :value => fullname%>
   </div>
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :member1 %>(Optional)<br>
     <%= f.text_field :member1 %>
   </div>
@@ -48,7 +47,7 @@
   <div class="field">
     <%= f.label :member4 %>(Optional)<br>
     <%= f.text_field :member4 %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description, :required=>'r'%>

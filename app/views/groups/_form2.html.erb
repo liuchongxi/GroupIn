@@ -1,0 +1,43 @@
+<% if logged_in? %>
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%if @group.member1id==nil%>
+  <div class="field">
+    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+    <%= f.hidden_field :member1, :value => fullname%>
+    <%= f.hidden_field :member1id, :value => loggedin_user.id%>
+  </div>
+  <%elsif @group.member2id==nil%>
+  <div class="field">
+    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+    <%= f.hidden_field :member2, :value => fullname%>
+    <%= f.hidden_field :member2id, :value => loggedin_user.id%>
+  </div>
+  <%elsif @group.member3id==nil%>
+  <div class="field">
+    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+    <%= f.hidden_field :member3, :value => fullname%>
+    <%= f.hidden_field :member3id, :value => loggedin_user.id%>
+  </div>
+  <%elsif @group.member4id==nil%>
+  <div class="field">
+    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+    <%= f.hidden_field :member4, :value => fullname%>
+    <%= f.hidden_field :member4id, :value => loggedin_user.id%>
+  </div>
+  <%end%>
+  <div class="actions">
+    <%= f.submit "join this group"%>
+  </div>
+<% end %>
+<%end%>

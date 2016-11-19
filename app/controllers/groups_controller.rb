@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @user=User.all
   end
 
   # GET /groups/new
@@ -51,6 +52,37 @@ class GroupsController < ApplicationController
     end
   end
 
+  # # PATCH/PUT /groups/1
+  # # PATCH/PUT /groups/1.json
+  # def join
+  #   if logged_in?
+  #   @group.member1=loggedin_user.first_name
+  #   respond_to do |format|
+  #     if @group.update(group_params)
+  #       format.html { redirect_to @group, notice: 'successfully join the group' }
+  #       format.json { render :show, status: :ok, location: @group }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @group.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+  # end
+  #
+  # # PATCH/PUT /groups/1
+  # # PATCH/PUT /groups/1.json
+  # def quit
+  #   respond_to do |format|
+  #     if @group.update(group_params)
+  #       format.html { redirect_to @group, notice: 'successfully quit the group.' }
+  #       format.json { render :show, status: :ok, location: @group }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @group.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
@@ -69,6 +101,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :time, :activity_type, :location, :group_owner, :member1, :member2, :member3, :member4, :description)
+      params.require(:group).permit(:name, :time, :activity_type, :location, :group_owner, :member1, :member2, :member3, :member4, :description,:user_id, :member1id, :member2id, :member3id, :member4id)
     end
 end
