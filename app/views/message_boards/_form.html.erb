@@ -1,0 +1,33 @@
+<%if logged_in?%>
+  <%= form_for(@message_board) do |f| %>
+    <% if @message_board.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@message_board.errors.count, "error") %> prohibited this message from being saved:</h2>
+        <% @message_board.errors.full_messages.each do |message| %>
+          <p style="text-align:left;"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+      <%= f.hidden_field :sender, :value => fullname%>
+      <%= f.hidden_field :user_id, :value => loggedin_user.id%>
+    </div>
+    <%tem=[]%>
+    <% @groups.each do |group| %>
+      <%tem.push(group.name)%>
+    <%end%>
+    <div class="field">
+      <%= f.label :Which_group_are_you_sending_to? %><br>
+      <%= f.select :group_name ,tem, :required=> 'r'%>
+    </div>
+    <div class="field">
+      <%= f.label :message %><br>
+      <%= f.text_field :message, :required=> 'r' %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Create message"%>
+    </div>
+  <% end %>
+<%end%>

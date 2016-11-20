@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sender:</strong>
+  <%= @message_board.sender %>
+</p>
+
+<p>
+  <strong>for_group:</strong>
+  <%= @message_board.group_name %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @message_board.message %>
+</p>
+
+<%= link_to 'Back', message_boards_path, {:style=>'color:blue;', :class => "css_class"} %>
+
+<%if logged_in?%>
+  <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin?%>
+    <%= link_to 'Edit', edit_message_board_path(@message_board), {:style=>'color:blue;', :class => "css_class"} %> |
+    <%= link_to 'Destroy', @message_board, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %>
+  <%end%>
+<%end%>

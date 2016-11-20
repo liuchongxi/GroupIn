@@ -1,0 +1,19 @@
+<%if logged_in?%>
+    <%= form_for(@message_board) do |f| %>
+      <% if @message_board.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@message_board.errors.count, "error") %> prohibited this message from being saved:</h2>
+          <% @message_board.errors.full_messages.each do |message| %>
+          <p style="text-align:left;"><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :message %><br>
+        <%= f.text_field :message, :required=> 'r' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update message" %>
+      </div>
+    <% end %>
+<%end%>

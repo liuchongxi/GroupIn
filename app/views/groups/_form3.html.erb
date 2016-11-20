@@ -1,0 +1,37 @@
+<% if logged_in? %>
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <% @group.errors.full_messages.each do |message| %>
+        <p style="text-align:left;"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%if @group.member1id==loggedin_user.id%>
+  <div class="field">
+    <%= f.hidden_field :member1, :value => nil%>
+    <%= f.hidden_field :member1id, :value => nil%>
+  </div>
+  <%elsif @group.member2id==loggedin_user.id%>
+  <div class="field">
+    <%= f.hidden_field :member2, :value => nil%>
+    <%= f.hidden_field :member2id, :value => nil%>
+  </div>
+  <%elsif @group.member3id==loggedin_user.id%>
+  <div class="field">
+    <%= f.hidden_field :member3, :value => nil%>
+    <%= f.hidden_field :member3id, :value => nil%>
+  </div>
+  <%elsif @group.member4id==loggedin_user.id%>
+  <div class="field">
+    <%= f.hidden_field :member4, :value => nil%>
+    <%= f.hidden_field :member4id, :value => nil%>
+  </div>
+  <%end%>
+  <div class="actions">
+    <%= f.submit "Quit this group"%>
+  </div>
+<% end %>
+<%end%>

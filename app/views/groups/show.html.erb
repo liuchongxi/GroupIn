@@ -22,37 +22,59 @@
 
 <p>
   <strong>Group owner:</strong>
-  <%= @group.group_owner %>
+  <!-- <%= @group.group_owner %> -->
+  <%= link_to @group.group_owner, @group.user, {:style=>'color:blue;', :class => "css_class"} %>
 </p>
 
-<p>
-  <strong>Member1:</strong>
-  <%= @group.member1 %>
-</p>
+  <p>
+    <strong>Member1:</strong>
+    <% @user.each do |user| %>
+      <%if user.id==@group.member1id%>
+        <%= link_to @group.member1,user, {:style=>'color:blue;', :class => "css_class"} %>
+      <%end%>
+    <%end%>
+  </p>
 
-<p>
-  <strong>Member2:</strong>
-  <%= @group.member2 %>
-</p>
+  <p>
+    <strong>Member2:</strong>
+    <% @user.each do |user| %>
+      <%if user.id==@group.member2id%>
+        <%= link_to @group.member2,user, {:style=>'color:blue;', :class => "css_class"} %>
+      <%end%>
+    <%end%>
+  </p>
 
-<p>
-  <strong>Member3:</strong>
-  <%= @group.member3 %>
-</p>
+  <p>
+    <strong>Member3:</strong>
+    <% @user.each do |user| %>
+      <%if user.id==@group.member3id%>
+        <%= link_to @group.member3,user, {:style=>'color:blue;', :class => "css_class"} %>
+      <%end%>
+    <%end%>
+  </p>
 
-<p>
-  <strong>Member4:</strong>
-  <%= @group.member4 %>
-</p>
-
+  <p>
+    <strong>Member4:</strong>
+    <% @user.each do |user| %>
+      <%if user.id==@group.member4id%>
+        <%= link_to @group.member4,user, {:style=>'color:blue;', :class => "css_class"} %>
+      <%end%>
+    <%end%>
+  </p>
 <p>
   <strong>Description:</strong>
   <%= @group.description %>
 </p>
 <!-- <p><%= link_to 'Destroy', @group, method: :delete,:style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
 <% if logged_in?%>
-<% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
-  <%= link_to 'Edit', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}  %> |
-<%end%>
+  <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
+    <%= link_to 'Edit', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}  %> |
+  <%elsif loggedin_user.id!=@group.member1id && loggedin_user.id!=@group.member2id && loggedin_user.id!=@group.member3id &&loggedin_user.id!=@group.member4id%>
+    <%if @group.member1id==nil || @group.member2id==nil || @group.member3id==nil || @group.member4id==nil%>
+      <%= link_to 'Join this group', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}%>
+    <%end%>
+  <%else%>
+    <%= link_to 'Quit this group', edit_group_path(@group), {:style=>'color:blue;', :class => "css_class"}%>
+  <%end%>
 <%end%>
 <%= link_to 'Back', groups_path, {:style=>'color:blue;', :class => "css_class"}  %>

@@ -1,0 +1,14 @@
+<%if logged_in?%>
+  <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin? %>
+    <h1>Editing Message</h1>
+
+    <%= render 'form2' %>
+
+    <%= link_to 'Show', @message_board, {:style=>'color:blue;', :class => "css_class"} %> |
+    <%= link_to 'Back', message_boards_path, {:style=>'color:blue;', :class => "css_class"} %>
+  <%else%>
+    <p style="color:red;font-size:200%;"> You do not have access to edit this message</p>
+  <%end%>
+<%else%>
+  <p style="color:red;font-size:200%;"> Please log in before editing message</p>
+<%end%>

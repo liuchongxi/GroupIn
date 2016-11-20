@@ -7,13 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Time</th>
-      <!-- <th>Activity type</th> -->
       <th>Location</th>
       <th>Group owner</th>
-      <!-- <th>Member1</th>
-      <th>Member2</th>
-      <th>Member3</th>
-      <th>Member4</th> -->
       <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -21,27 +16,28 @@
 
   <tbody>
     <% @groups.each do |group| %>
-    <% if group.activity_type== "sports"%>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.time %></td>
-        <!-- <td><%= group.activity_type %></td> -->
-        <td><%= group.location %></td>
-        <td><%= group.group_owner %></td>
-        <!-- <td><%= group.member1 %></td>
-        <td><%= group.member2 %></td>
-        <td><%= group.member3 %></td>
-        <td><%= group.member4 %></td> -->
-        <td><%= group.description %></td>
-        <td><%= link_to 'More detail', group, {:style=>'color:blue;', :class => "css_class"} %></td>
-        <!-- <td><%= link_to 'Edit', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td> -->
-        <!-- <% if logged_in?%>
-        <% if loggedin_user.admin? %>
-        <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% end %> -->
-      </tr>
-    <%end%>
+      <% if group.activity_type== "sports"%>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= group.time %></td>
+          <td><%= group.location %></td>
+          <td><%= group.group_owner %></td>
+          <td><%= group.description %></td>
+          <td><%= link_to 'More detail', group, {:style=>'color:blue;', :class => "css_class"} %></td>
+          <% if logged_in?%>
+            <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+              <td><%= link_to 'Edit the group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
+              <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
+            <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
+              <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
+                <td><%= link_to 'Join this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
+              <%end%>
+            <%else%>
+              <td><%= link_to 'Quit this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>
