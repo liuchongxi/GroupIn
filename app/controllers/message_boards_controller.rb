@@ -20,14 +20,13 @@ class MessageBoardsController < ApplicationController
 
   # GET /message_boards/1/edit
   def edit
-    @groups=Group.all
   end
 
   # POST /message_boards
   # POST /message_boards.json
   def create
     @message_board = MessageBoard.new(message_board_params)
-
+    @groups=Group.all
     respond_to do |format|
       if @message_board.save
         format.html { redirect_to @message_board, notice: 'Message board was successfully created.' }

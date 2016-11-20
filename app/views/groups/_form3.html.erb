@@ -3,12 +3,9 @@
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
       <% @group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p style="text-align:left;"><%= message %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 

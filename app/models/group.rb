@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   validates :activity_type, presence: true
   validates :location, presence: true, length: {maximum: 50 }
   validates :group_owner, presence: true
-  validates :description, presence: true, length: {maximum: 1000 }
+  validates :description, presence: true, length: {maximum: 500 }
   # validate :event_time_should_be_later_than_now
   # def event_time_should_be_later_than_now
   #   if time<Time.now
