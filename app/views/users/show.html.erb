@@ -46,6 +46,7 @@
       <%end%>
     <% end %>
     <%if loggedin_user.admin?%>
+      <p style="font-size:150%;"> <br>Check or edit all users (admin privilege)</p>
       <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
     <%end%>
   <%end%>

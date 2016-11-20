@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119042017) do
+ActiveRecord::Schema.define(version: 20161120031836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20161119042017) do
     t.integer  "member2id"
     t.integer  "member3id"
     t.integer  "member4id"
+  end
+
+  create_table "message_boards", force: :cascade do |t|
+    t.string   "sender"
+    t.string   "group_name"
+    t.string   "message"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -15,8 +15,12 @@
     <h1>GroupIN</h1>
     <p align="right" style="color:blue;">
       <% if logged_in? %>
-        logged in as
-        <%= loggedin_user.email%>
+        <%if loggedin_user.admin? %>
+          logged in as admin
+        <%else%>
+          logged in as
+          <%= loggedin_user.email%>
+        <%end%>
         <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
         <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
       <% else %>
@@ -39,6 +43,7 @@
           </ul>
         </li>
         <!-- <li class="PP"><a href="#">P.Page</a> -->
+        <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
         <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
         <li><%= link_to("About Us","#", :class => 'NavButton')%>
           <ul>

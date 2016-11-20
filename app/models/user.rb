@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token
   has_secure_password #ensure that an attacker won’t be able to log in to the site even if they obtain a copy of the database
   has_many :groups
+  has_many :message_boards
   validates :first_name, presence: true, length: {maximum: 50 } # first_name has maximum length of 50 characters.
   validates :last_name, presence: true, length: {maximum: 50 } # last_name has maximum length of 50 characters.
   validates :email, uniqueness: {case_sensitive: false}, presence: true
