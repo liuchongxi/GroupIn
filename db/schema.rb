@@ -45,6 +45,29 @@ ActiveRecord::Schema.define(version: 20161120031836) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tokimons", force: :cascade do |t|
+    t.string   "name"
+    t.float    "weight"
+    t.float    "height"
+    t.integer  "fly"
+    t.integer  "fight"
+    t.integer  "fire"
+    t.integer  "water"
+    t.integer  "electric"
+    t.integer  "ice"
+    t.integer  "total"
+    t.integer  "trainer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"

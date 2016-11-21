@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!-- <p>
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
@@ -18,16 +18,28 @@
 <p>
   <strong>Location:</strong>
   <%= @group.location %>
-</p>
+</p> -->
+<p style="font-size:120%;">
+
+  Welcome to the group "<%= @group.name %>"!<br>
+  This is a group for <%= @group.activity_type %> and
+  this event happens on <%= @group.time %> and is located at <%= @group.location %>.<br>
+  Here is the description of this group:
 
 <p>
-  <strong>Group owner:</strong>
+  <%= @group.description %>.
+</p>
+<p style="font-size:120%;">
+  here is the owner and members of this group:
+</p>
+<p>
+  Group owner:
   <!-- <%= @group.group_owner %> -->
   <%= link_to @group.group_owner, @group.user, {:style=>'color:blue;', :class => "css_class"} %>
 </p>
 
   <p>
-    <strong>Member1:</strong>
+    Member1:
     <% @user.each do |user| %>
       <%if user.id==@group.member1id%>
         <%= link_to @group.member1,user, {:style=>'color:blue;', :class => "css_class"} %>
@@ -36,7 +48,7 @@
   </p>
 
   <p>
-    <strong>Member2:</strong>
+    Member2:
     <% @user.each do |user| %>
       <%if user.id==@group.member2id%>
         <%= link_to @group.member2,user, {:style=>'color:blue;', :class => "css_class"} %>
@@ -45,7 +57,7 @@
   </p>
 
   <p>
-    <strong>Member3:</strong>
+    Member3:
     <% @user.each do |user| %>
       <%if user.id==@group.member3id%>
         <%= link_to @group.member3,user, {:style=>'color:blue;', :class => "css_class"} %>
@@ -54,17 +66,25 @@
   </p>
 
   <p>
-    <strong>Member4:</strong>
+    Member4:
     <% @user.each do |user| %>
       <%if user.id==@group.member4id%>
         <%= link_to @group.member4,user, {:style=>'color:blue;', :class => "css_class"} %>
       <%end%>
     <%end%>
   </p>
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
+  <!-- <p>
+    <strong>Description:</strong>
+    <%= @group.description %>
+  </p> -->
+  <p>
+  <%= link_to 'Send a message',new_message_board_path, {:style=>'color:blue;', :class => "css_class"}%>
+  </p>
+    <% @message_board.each do |message_board| %>
+      <%if message_board.group_name==@group.name%>
+        <p><b><%=message_board.sender%></b> left a message for this group: <%= message_board.message%></p>
+      <%end%>
+    <%end%>
 <!-- <p><%= link_to 'Destroy', @group, method: :delete,:style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
 <% if logged_in?%>
   <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
