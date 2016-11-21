@@ -1,0 +1,43 @@
+<!--<%= link_to("<< Back to List", ad_requests_path, {:style=>'color:blue;', :class => "css_class"}) %>-->
+
+  <div class="Request New">
+    <h1>Create Request</h1>
+
+    <p>Please fill in the required information, our admins will contact you as soon as possible :)</p>
+
+    <%= form_for(@request, :url => ad_requests_path, :method => 'post') do |f| %>
+
+      <table summary="Request form fields">
+        <tr>
+          <th>Ad Name</th>
+          <td><%= f.text_field(:ad_name, :required => true) %></td>
+        </tr>
+        <tr>
+          <th>First Name</th>
+          <td><%= f.text_field(:first_name, :required => true) %></td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td><%= f.text_field(:last_name, :required => true) %></td>
+        </tr>
+        <tr>
+          <th>Phone Number</th>
+          <td><%= f.text_field(:phone_num, :required => true) %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= f.text_field(:email, :required => true) %></td>
+          <td>Please enter correct email format, i.e @domain.com</td>
+        </tr>
+        <tr>
+          <th>Detail</th>
+          <td><%= f.text_area(:request_detail, :rows => 5, :required => true) %></td>
+        </tr>
+      </table>
+
+      <div class="form-buttons">
+        <%= f.submit("Create Subject") %>
+      </div>
+
+    <% end %>
+  </div>

@@ -1,0 +1,25 @@
+<% if logged_in? %>
+  <%if loggedin_user.admin? %>
+    <%= link_to("<< Back to List", ad_requests_path, {:style=>'color:blue;', :class => "css_class"}) %>
+
+    <div class="Request delete">
+      <h2>Delete Request</h2>
+
+      <%= form_for(@request, :method => 'delete') do |f| %>
+
+        <p>Are you sure you want to permanently delete this request?</p>
+
+        <p class="reference-name"><%= f.object.ad_name %></p>
+
+        <div class="form-buttons">
+          <%= f.submit("Delete Request") %>
+        </div>
+
+      <% end %>
+    </div>
+  <%else%>
+    <p style="color:red;font-size:200%;"> This page can only be viewed by admin user</p>
+  <%end%>
+<%else%>
+  <p style="color:red;font-size:200%;"> Please log in before you sending ad request</p>
+<%end%>

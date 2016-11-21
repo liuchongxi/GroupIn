@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :ad_requests do
+     member do
+        get :delete
+     end
+ end
+get 'ad_request/index'
   resources :message_boards
   get 'category/sports'
 

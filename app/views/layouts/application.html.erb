@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/bootstrap.min.css">
+    <script src="/assets/jquery-3.1.1.min.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
 
     <%= stylesheet_link_tag 'application'%>
     <%= javascript_include_tag 'application'%>
@@ -17,7 +19,6 @@
 
 <body>
   <!-- Header -->
-
     <header class=>
       <!-- Navigation -->
       <nav class="navbar navbar-default">
@@ -35,8 +36,15 @@
               </ul>
             </li>
             <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
-            <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
-
+            <% if logged_in? %>
+              <%if loggedin_user.admin? %>
+                <li><%= link_to("All Ad Requests",ad_requests_path, :class => 'NavButton1')%></li>
+              <%else%>
+                <li><%= link_to("New Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
+              <%end%>
+            <%else%>
+              <li><%= link_to("Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
+            <%end%>
             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 About US<span class="caret"></sapn></a>
               <ul class="dropdown-menu">
@@ -92,8 +100,7 @@
   </div>
 
 
-<script src="/assets/jquery-3.1.1.min.js"></script>
-<script src="/assets/bootstrap.min.js"></script>
+
 </body>
 
 </html>

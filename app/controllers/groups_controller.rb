@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @user=User.all
+    @message_board=MessageBoard.all
   end
 
   # GET /groups/new
