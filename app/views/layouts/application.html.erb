@@ -14,32 +14,6 @@
 
     <title>GroupIN | <%= @page_title || "Welcome" %></title>
   </head>
-<!-- HEAD SECTION -->
-
-<!-- IE Edge Meta Tag -->
-<
-
-<!-- Minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional Theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Optional IE8 Support -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-
-<!-- FOOTER SECTION - Before closing </body> tag -->
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-<!-- Minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 <body>
   <!-- Header -->
     <header class=>
@@ -84,17 +58,17 @@
             <%else%>
               logged in as <%= loggedin_user.email%>
             <%end%>
-            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
               <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
             </button>
-            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
               <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
             </button>
           <% else %>
-            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
               <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
             </button>
-            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
               <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
             </button>
           <% end %>
