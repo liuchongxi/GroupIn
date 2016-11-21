@@ -1,60 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
   <head>
-    <title>GroupIN | <%= @page_title || "Welcome" %></title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/bootstrap.min.css">
+
+    <%= stylesheet_link_tag 'application'%>
+    <%= javascript_include_tag 'application'%>
     <%= csrf_meta_tags %>
+
+    <title>GroupIN | <%= @page_title || "Welcome" %></title>
   </head>
 
 
 <body>
   <!-- Header -->
-  <div id="header">
-    <h1>GroupIN</h1>
-    <p align="right" style="color:blue;">
-      <% if logged_in? %>
-        <%if loggedin_user.admin? %>
-          logged in as admin
-        <%else%>
-          logged in as
-          <%= loggedin_user.email%>
-        <%end%>
-        <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
-        <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
-      <% else %>
-        <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
-        <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
-      <% end %>
-    </p>
-  </div>
 
-  <!-- Navigation -->
-  <nav>
-    <div id="navigation">
-      <ul>
-        <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
-        <li><%= link_to("Category","#", :class => 'NavButtonL1')%>
-          <ul>
-            <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
-            <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
-            <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
+    <header class=>
+      <!-- Navigation -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to("GroupIN",{:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand')%>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
+            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></sapn></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
+                <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
+                <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
+              </ul>
+            </li>
+            <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
+            <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
+
+            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                About US<span class="caret"></sapn></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
+                <li><%= link_to("Contact",{:controller => 'about_us', :action =>'contact'}, :class => 'NavButtonL1')%></li>
+                <li><%= link_to("FAQ",{:controller => 'about_us', :action =>'FAQ'},:class => 'NavButtonL1')%></li>
+              </ul>
+            </li> 
           </ul>
-        </li>
-        <!-- <li class="PP"><a href="#">P.Page</a> -->
-        <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
-        <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
-        <li><%= link_to("About Us","#", :class => 'NavButton')%>
-          <ul>
-            <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
-            <li><%= link_to("Contact",{:controller => 'about_us', :action =>'contact'}, :class => 'NavButtonL1')%></li>
-            <li><%= link_to("FAQ",{:controller => 'about_us', :action =>'FAQ'},:class => 'NavButtonL1')%></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
+
+          <% if logged_in? %>
+            <%if loggedin_user.admin? %>
+              logged in as admin
+            <%else%>
+              logged in as <%= loggedin_user.email%>
+            <%end%>
+            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+              <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
+            </button>
+            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+              <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
+            </button>
+          <% else %>
+            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+              <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
+            </button>
+            <button type="button" class="btn btn-default btn-sm navbar-btn navbar-right">
+              <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
+            </button>
+          <% end %>
+        
+        </div>  
+      </nav>
+    </header>
+
+
 
   <!-- Main -->
   <div id="main">
@@ -69,10 +87,13 @@
   </div>
 
   <!-- Footer -->
-  <div id="footer">
+  <div id="Bottom">
     <address id="copyright">&copy; Simon Fraser University | CMPT276 Group15</address>
   </div>
 
+
+<script src="/assets/jquery-3.1.1.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -11,25 +11,25 @@
 
   <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name , :required=> 'r', class: 'form-control'%>
+    <%= f.text_field :first_name , :required=> 'r', class: ''%>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name , :required=> 'r', class: 'form-control'%>
+    <%= f.text_field :last_name , :required=> 'r', class: ''%>
   </div>
   <div class="field">
     <%= f.label :sfu_email_address %><br>
-    <%= f.email_field :email , :required=> 'r', class: 'form-control'%>
+    <%= f.email_field :email , :required=> 'r', class: ''%>
   </div>
   <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password%>
     <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, :required=>'r', class: 'form-control' %>
+    <%= f.password_field :password_confirmation, :required=>'r', class: '' %>
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.select :gender ,["male", "female"], :required=> 'r', class: 'form-control'%>
+    <%= f.select :gender ,["male", "female"], :required=> 'r', class: ''%>
   </div>
   <div class="field">
     <%= f.label :major %><br>
