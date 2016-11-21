@@ -5,83 +5,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
 
-    <%= stylesheet_link_tag 'application'%>
-    <!-- <%= javascript_include_tag 'application'%> -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-trubolinks-track' => true %>
     <%= csrf_meta_tags %>
+
     <!-- Optional IE8 Support -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <title>GroupIN | <%= @page_title || "Welcome" %></title>
   </head>
 <body>
   <!-- Header -->
-    <header class="">
-      <!-- Navigation -->
-      <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <%= link_to("GroupIN",{:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand')%>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
-            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></sapn></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
-                <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
-                <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
-              </ul>
-            </li>
-            <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
-            <% if logged_in? %>
-              <%if loggedin_user.admin? %>
-                <li><%= link_to("All Ad Requests",ad_requests_path, :class => 'NavButton1')%></li>
-              <%else%>
-                <li><%= link_to("New Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
-              <%end%>
-            <%else%>
-              <li><%= link_to("Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
-            <%end%>
-            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                About US<span class="caret"></sapn></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
-                <li><%= link_to("Contact",{:controller => 'about_us', :action =>'contact'}, :class => 'NavButtonL1')%></li>
-                <li><%= link_to("FAQ",{:controller => 'about_us', :action =>'FAQ'},:class => 'NavButtonL1')%></li>
-              </ul>
-            </li> 
-          </ul>
-
+  <header class="">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to("GroupIN",{:controller => 'welcome', :action => 'index'}, :class => 'navbar-brand')%>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></sapn></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
+              <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
+              <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
+            </ul>
+          </li>
+          <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
           <% if logged_in? %>
             <%if loggedin_user.admin? %>
-              logged in as admin
+              <li><%= link_to("All Ad Requests",ad_requests_path, :class => 'NavButton1')%></li>
             <%else%>
-              logged in as <%= loggedin_user.email%>
+              <li><%= link_to("New Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
             <%end%>
-            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
-              <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
-            </button>
-            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
-              <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
-            </button>
-          <% else %>
-            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
-              <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
-            </button>
-            <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
-              <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
-            </button>
-          <% end %>
-        
-        </div>  
-      </nav>
-    </header>
+          <%else%>
+            <li><%= link_to("Ad Request",new_ad_request_path, :class => 'NavButton1')%></li>
+          <%end%>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              About US<span class="caret"></sapn></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
+              <li><%= link_to("Contact",{:controller => 'about_us', :action =>'contact'}, :class => 'NavButtonL1')%></li>
+              <li><%= link_to("FAQ",{:controller => 'about_us', :action =>'FAQ'},:class => 'NavButtonL1')%></li>
+            </ul>
+          </li> 
+        </ul>
+
+        <% if logged_in? %>
+        <!--   <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
+            <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
+          </button>
+          <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
+            <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
+          </button> -->
+          <p class="navbar-text navbar-right">
+            <%= link_to("Log OUT", {:controller => 'sessions', :action => 'destroy'}, method: :delete, :class => 'Sign' )%>
+          </p>
+          <p class="navbar-text navbar-right">
+            <%= link_to("Profile", user_path(loggedin_user), :class => 'Sign' )%>
+          </p>
+           <%if loggedin_user.admin? %>
+            <P class="navbar-text navbar-right">logged in as admin</p>
+          <%else%>
+            <P class="navbar navbar-right">logged in as <%= loggedin_user.email%><p>
+          <%end%>
+        <% else %>
+          <!-- <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
+            <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
+          </button>
+          <button type="button" class="btn btn-default btn-xs navbar-btn navbar-right">
+            <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
+          </button> -->
+          <p class="navbar-text navbar-right">
+            <%= link_to("Sign UP",{:controller => 'users', :action => 'new'}, :class => 'Sign')%>
+          </p>
+          <p class="navbar-text navbar-right">
+            <%= link_to("Log IN",{:controller => 'sessions', :action => 'new'}, :class => 'Sign')%>
+          </p>
+        <% end %>
+      
+      </div>  
+    </nav>
+  </header>
 
 
 
@@ -99,9 +113,10 @@
 
   <!-- Footer -->
   <div id="Bottom">
-    <address id="copyright">&copy; Simon Fraser University | CMPT276 Group15</address>
+    <address id="copyright"><br><br><br><br>&copy; Simon Fraser University | CMPT276 Group15</address>
   </div>
 
+  
 </body>
 
 </html>

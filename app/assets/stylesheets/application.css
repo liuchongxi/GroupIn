@@ -1,3 +1,7 @@
+@import "bootstrap";
+@import "bootstrap-sporockets"
+
+
 .bgimage{
   background-image: url('geometry.png');
   background-position: center center;
