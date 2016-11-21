@@ -44,7 +44,15 @@
         </li>
         <!-- <li class="PP"><a href="#">P.Page</a> -->
         <li><%= link_to("Message Board",{:controller => 'message_boards', :action => 'index'}, :class => 'NavButtonL1')%></li>
-        <li><%= link_to("Ad Request","#", :class => 'NavButton')%></li>
+        <% if logged_in? %>
+          <%if loggedin_user.admin? %>
+            <li><%= link_to("Show all Ad Requests",ad_requests_path, :class => 'NavButton')%></li>
+          <%else%>
+            <li><%= link_to("New Ad Request",new_ad_request_path, :class => 'NavButton')%></li>
+          <%end%>
+        <%else%>
+          <li><%= link_to("New Ad Request",new_ad_request_path, :class => 'NavButton')%></li>
+        <%end%>
         <li><%= link_to("About Us","#", :class => 'NavButton')%>
           <ul>
             <li><%= link_to("Site Info",{:controller => 'about_us', :action =>'site_info'}, :class => 'NavButtonL1')%></li>
