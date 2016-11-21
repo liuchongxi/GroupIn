@@ -45,22 +45,6 @@ ActiveRecord::Schema.define(version: 20161120031836) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tokimons", force: :cascade do |t|
-    t.string   "name"
-    t.float    "weight"
-    t.float    "height"
-    t.integer  "fly"
-    t.integer  "fight"
-    t.integer  "fire"
-    t.integer  "water"
-    t.integer  "electric"
-    t.integer  "ice"
-    t.integer  "total"
-    t.integer  "trainer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "trainers", force: :cascade do |t|
     t.string   "name"
     t.integer  "level"
@@ -76,9 +60,9 @@ ActiveRecord::Schema.define(version: 20161120031836) do
     t.string   "major"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
-    t.string   "password_digest"
   end
 
   create_table "widgets", force: :cascade do |t|

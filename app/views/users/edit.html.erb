@@ -1,8 +1,8 @@
 <% if logged_in?%>
  <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
-  <h1>Editing User</h1>
+  <h1>Edit Password</h1>
 
-  <%= render 'form' %>
+<%= render 'form' %>
 
   <%= link_to 'Show', @user, {:style=>'color:blue;', :class => "css_class"} %> |
   <%if loggedin_user.admin?%>
