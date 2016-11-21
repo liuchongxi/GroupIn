@@ -5,11 +5,9 @@ one:
   group_name: MyString
   message: MyString
   user_id: 1
-  group_id: 1
 
 two:
   sender: MyString
   group_name: MyString
   message: MyString
   user_id: 1
-  group_id: 1

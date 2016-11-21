@@ -24,7 +24,7 @@
     </div>
     <div class="field">
       <%= f.label :message %><br>
-      <%= f.text_field :message, :required=> 'r' %>
+      <%= f.text_area :message, :required=>'r', rows: "5", cols: "35"%>
     </div>
     <div class="actions">
       <%= f.submit "Create message"%>
