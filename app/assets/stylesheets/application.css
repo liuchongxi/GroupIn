@@ -1,13 +1,37 @@
+/*Header*/
+  /*Nav*/
+  .bgimage{
+    background-image: url('geometry.png');
+    background-position: center center;
+    background-size: cover;
+    height: 500px;
+  }
+  .navbar{/*for the navbar all*/
+    /*font-family: Montserrat, sans-serif;*/
+    /*background-color: #2d2d30;*/
+    /*border: 20;*/
+    /*font-size: 20px !important;*/
+    /*letter-spacing: 20px;*/
+    opacity: 0.9;
+    /*height:100px;*/
+  }
+  .navbar li a, .navbar-brand, .dropdown-menu{/*for brand, menu, dropdown */
+    /*color:red!important;*/
+    /*background-color:blue;*/
+
+  }
+
+  .navbar li a:hover {
+    /*background-color: blue !important;*/
+  }
 
 
-.bgimage{
-  background-image: url('geometry.png');
-  background-position: center center;
-  background-size: cover;
-  height: 500px;
+/*logIn signUP*/
+.Sign:hover{
+  text-decoration: none;
+  /*color:red;*/
 }
 
+/*Main*/
 
-
-
-
+/*Footer*/
