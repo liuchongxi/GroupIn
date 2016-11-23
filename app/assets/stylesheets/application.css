@@ -1,3 +1,21 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
 /*Header*/
   /*Nav*/
   .bgimage{
@@ -6,13 +24,21 @@
     background-size: cover;
     height: 500px;
   }
+
   .navbar{/*for the navbar all*/
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*border: 0;*/
+    border-radius: 0;
+    /*margin-bottom: 0;*/
+    /*font-size: 12px;*/
+    /*letter-spacing: 5px;*/
     /*font-family: Montserrat, sans-serif;*/
     /*background-color: #2d2d30;*/
     /*border: 20;*/
     /*font-size: 20px !important;*/
     /*letter-spacing: 20px;*/
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     /*height:100px;*/
   }
   .navbar li a, .navbar-brand, .dropdown-menu{/*for brand, menu, dropdown */
@@ -20,10 +46,12 @@
     /*background-color:blue;*/
 
   }
-
-  .navbar li a:hover {
+.navbar-brand{
+  font-size: 25px;
+}
+.navbar li a:hover {
     /*background-color: blue !important;*/
-  }
+}
 
 
 /*logIn signUP*/
@@ -35,3 +63,10 @@
 /*Main*/
 
 /*Footer*/
+#Bottom{
+  background-color: #333;
+
+}
+#copyright{
+  color: #9d9d9d;
+}

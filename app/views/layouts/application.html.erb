@@ -10,8 +10,8 @@
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track' => true) %>
+    <%= javascript_include_tag('application', 'data-turbolinks-track' => true) %>
     <%= csrf_meta_tags %>
 
     <!-- Optional IE8 Support -->
@@ -44,6 +44,7 @@
             <li><%= link_to("Home",{:controller => 'welcome', :action => 'index'}, :class => 'NavButtonL1')%></li>
             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></sapn></a>
               <ul class="dropdown-menu">
+                <li><%= link_to("ALL", groups_path, :class => "NavButtonL2") %></li>
                 <li><%= link_to("Sports",{:controller => 'category', :action =>'sports'}, :class => 'NavButtonL2')%></li>
                 <li><%= link_to("Food",{:controller =>'category', :action => 'food'}, :class => 'NavButtonL2')%></li>
                 <li><%= link_to("Study",{:controller =>'category', :action => 'study'}, :class => 'NavButtonL2')%></li>
@@ -122,16 +123,18 @@
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>
 
-    <div id="content">
+    <div id="WelcomeContent">
       <%= yield %>
     </div>
 
   </div>
 
   <!-- Footer -->
-  <div id="Bottom">
-    <address id="copyright"><br><br><br><br>&copy; Simon Fraser University | CMPT276 Group15</address>
-  </div>
+  <footer id="Bottom">
+    <div class="container">
+      <address id="copyright"><br><br><br><br>&copy; Simon Fraser University | CMPT276 Group15</address>
+    </div>
+  </footer>
 
   
 </body>

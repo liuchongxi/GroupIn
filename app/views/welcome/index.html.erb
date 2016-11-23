@@ -2,12 +2,58 @@
 <% @page_title = "Welcome" %>
 
 
+<div class="WelcomeCategory">
+	<div class="content container">
 
-<div id="images">
+
+
+		<div class="row">
+			<section class="col-xs-12 col-sm-4">
+				<div class="thumbnail">
+					<a href="/category/food/">
+						<img src="/assets/FoodBreakfast.jpg", alt="Food">
+						<div class="caption">
+							<h3>Food</h3>
+							<p>~~~~~~~~~~~~~~~~~~~~~~~</p>
+						</div>
+					</a>
+				</div>
+			</section>
+
+			<section class="col-xs-12 col-sm-4">
+				<div class="thumbnail">
+					<a href="/category/study/">
+						<img src="/assets/StudyCoffee.jpg", alt="Study">
+						<div class="caption">
+							<h3>Study</h3>
+							<p>~~~~~~~~~~~~~~~~~~~~~~~</p>
+						</div>
+					</a>
+				</div>
+			</section>
+
+			<section class="col-xs-12 col-sm-4">
+				<div class="thumbnail">
+					<a href="/category/sports/">
+						<img src="/assets/SportBadminton.jpg", alt="Sport">
+						<div class="caption">
+							<h3>Sport</h3>
+							<p>~~~~~~~~~~~~~~~~~~~~~~~</p>
+						</div>
+					</a>
+				</div>
+			</section>
+		</div><!-- row 1 -->
+
+	</div><!-- end of content container -->
+</div>
+
+
+<!-- <div id="images">
 <img><%= link_to(image_tag("view.png"), {:controller => 'groups', :action => 'index'}, :class => "tag") %></img>
 <% if logged_in? %>
   <img><%= link_to(image_tag("create.png"),{:controller => 'groups', :action => 'new'}, :class => "tag") %></img>
 <% else %>
   <img><%= link_to(image_tag("create.png"),{:controller => 'sessions', :action => 'new'}, :class => "tag") %></img>
 <% end %>
-</div>
+</div> -->
