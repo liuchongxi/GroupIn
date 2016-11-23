@@ -2,7 +2,15 @@
 // They will automatically be included in application.css.
 
 */
-
+.WelcomeSlide{
+	margin-top: -20px;
+}
+.WelcomeSlide h3{
+	/*color:red;*/
+	/*text-align: left;*/
+	/*max-height: 700px;*/
+	/*min-width:  1300px;*/
+}
 .WelcomeCategory{
 	/*background-image: url('weather.jpg');*/
     /*background-position: center center;*/
