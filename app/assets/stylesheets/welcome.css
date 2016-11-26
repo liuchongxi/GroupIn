@@ -5,7 +5,9 @@
 .WelcomeSlide{
 	margin-top: -20px;
 }
-.WelcomeSlide h3{
+.WelcomeSlide img{
+    width: 100%;
+    margin: auto;
 	/*color:red;*/
 	/*text-align: left;*/
 	/*max-height: 700px;*/
