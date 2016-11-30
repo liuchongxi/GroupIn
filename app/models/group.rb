@@ -12,5 +12,8 @@ class Group < ActiveRecord::Base
   #     errors.add(:time, "time is invalid(should be later than present time)")
   #   end
   # end
+  #calculate longitude & latitude
+  geocoded_by :location
+  after_validation :geocode
 
 end

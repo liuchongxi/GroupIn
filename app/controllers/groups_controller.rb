@@ -12,6 +12,11 @@ class GroupsController < ApplicationController
   def show
     @user=User.all
     @message_board=MessageBoard.all
+    @hash = Gmaps4rails.build_markers(@group) do |group, marker|
+    marker.lat group.latitude
+    marker.lng group.longitude
+    marker.infowindow "here is the location"
+    end
   end
 
   # GET /groups/new
