@@ -15,3 +15,20 @@ Merge https://git.heroku.com/mysterious-sands-95048
 #
 # Lines starting with '#' will be ignored, and an empty message aborts
 # the commit.
+
+*** These modified files were found in JOE when it aborted on Sun Nov 20 20:02:55 2016
+*** JOE was aborted by UNIX signal 15
+
+*** File '/home/tslaven/sfuhome/CMPT276/project/.git/MERGE_MSG'
+erge branch 'master' of https://git.heroku.com/mysterious-sands-95048
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+/home/tslaven/sfuhome/CMPT276/project/.git/MERGE_MSG
+/home/tslaven/sfuhome/CMPT276/project/.git/COMMIT_EDITMSG
+/home/tslaven/sfuhome/CMPT276/project/.git/MERGE_MSG
