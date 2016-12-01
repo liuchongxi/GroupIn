@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 20161130064006) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dietlabels", force: :cascade do |t|
+    t.string   "name"
+    t.string   "apiparameter"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "dietlabels_preferences", force: :cascade do |t|
+    t.integer "preference_id"
+    t.integer "dietlabel_id"
+  end
+
+  add_index "dietlabels_preferences", ["dietlabel_id"], name: "index_dietlabels_preferences_on_dietlabel_id", using: :btree
+  add_index "dietlabels_preferences", ["preference_id"], name: "index_dietlabels_preferences_on_preference_id", using: :btree
+
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "time"
@@ -55,11 +71,36 @@ ActiveRecord::Schema.define(version: 20161130064006) do
     t.float    "longitude"
   end
 
-  create_table "locations", force: :cascade do |t|
+  create_table "healthlabels", force: :cascade do |t|
     t.string   "name"
-    t.integer  "latitude"
-    t.integer  "longitude"
-    t.string   "user_id"
+    t.string   "apiparameter"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "healthlabels_preferences", force: :cascade do |t|
+    t.integer "preference_id"
+    t.integer "healthlabel_id"
+  end
+
+  add_index "healthlabels_preferences", ["healthlabel_id"], name: "index_healthlabels_preferences_on_healthlabel_id", using: :btree
+  add_index "healthlabels_preferences", ["preference_id"], name: "index_healthlabels_preferences_on_preference_id", using: :btree
+
+  create_table "ingredient_lines", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.text     "text"
+    t.string   "quantity"
+    t.string   "measure"
+    t.string   "food"
+    t.string   "weight"
+    t.integer  "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,41 +114,60 @@ ActiveRecord::Schema.define(version: 20161130064006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", force: :cascade do |t|
-    t.string   "pname"
-    t.integer  "age"
+  create_table "preferences", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "things", force: :cascade do |t|
-    t.string   "tname"
-    t.text     "description"
-    t.integer  "person_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "recipes", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.string   "recipe_id"
+    t.string   "recipe_name"
+    t.string   "health_labels"
+    t.string   "diet_labels"
+    t.string   "image_url"
+    t.string   "share_as"
+    t.text     "dietLabels"
+    t.text     "healthLabels"
+    t.text     "cautions"
+    t.string   "source"
+    t.string   "sourceIcon"
+    t.string   "yield"
+    t.string   "calories"
+    t.string   "totalWeight"
   end
 
-  create_table "tokimons", force: :cascade do |t|
-    t.string   "toname"
-    t.integer  "weight"
-    t.integer  "height"
-    t.integer  "fly"
-    t.integer  "fight"
-    t.integer  "fire"
-    t.integer  "water"
-    t.integer  "electric"
-    t.integer  "ice"
-    t.integer  "total"
-    t.integer  "trainer_id"
+  create_table "recipes_savedrecipes", force: :cascade do |t|
+    t.integer "savedrecipe_id"
+    t.integer "recipe_id"
+  end
+
+  add_index "recipes_savedrecipes", ["recipe_id"], name: "index_recipes_savedrecipes_on_recipe_id", using: :btree
+  add_index "recipes_savedrecipes", ["savedrecipe_id"], name: "index_recipes_savedrecipes_on_savedrecipe_id", using: :btree
+
+  create_table "savedrecipes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "trainers", force: :cascade do |t|
-    t.string   "trname"
-    t.integer  "level"
-    t.integer  "trainer_id"
+  create_table "total_daily_nodes", force: :cascade do |t|
+    t.string   "label"
+    t.string   "quantity"
+    t.string   "unit"
+    t.string   "node_label"
+    t.integer  "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "total_nutrient_nodes", force: :cascade do |t|
+    t.string   "label"
+    t.string   "quantity"
+    t.string   "unit"
+    t.string   "node_label"
+    t.integer  "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
