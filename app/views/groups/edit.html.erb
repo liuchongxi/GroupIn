@@ -3,47 +3,49 @@
 <div class="groupEdit container">
   <div class="row">
     <div class="col-sm-12">
+      <div class="col-sm-10">
+        <% if logged_in? %>
+          <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
+            <div class="form-horizontal">
+              <fieldset>
+                <legend><h3>Editing Gorup</h3></legend>
+                <p>You are group owner, and you can edit this group</p>
+                <%= render 'form' %>
+               <!--  <%= link_to 'Show', @group, :class => "css_class"%>
+                <%= link_to 'Back', groups_path, :class => "css_class"%> -->
+              </fieldset>
+            </div>
+            <br>
 
-      <% if logged_in? %>
-        <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
-          <div class="form-horizontal">
-            <fieldset>
-              <legend><h3>Editing Gorup</h3></legend>
-              <p>You are group owner, and you can edit this group</p>
-              <%= render 'form' %>
-             <!--  <%= link_to 'Show', @group, :class => "css_class"%>
-              <%= link_to 'Back', groups_path, :class => "css_class"%> -->
-            </fieldset>
-          </div>
-          <br>
+          <%elsif @group.member1id==loggedin_user.id || @group.member2id==loggedin_user.id || @group.member3id==loggedin_user.id || @group.member4id==loggedin_user.id%>
+            <div class="well">
+              <p style="text-align:center;">Click "Quit this group" to Quit the "<%=@group.name%>" group</p>
+            </div> 
+            <%= render'form3' %>
+            <br>
 
-        <%elsif @group.member1id==loggedin_user.id || @group.member2id==loggedin_user.id || @group.member3id==loggedin_user.id || @group.member4id==loggedin_user.id%>
-          <div class="well">
-            <p style="text-align:center;">Click "Quit this group" to Quit the "<%=@group.name%>" group</p>
-          </div> 
-          <%= render'form3' %>
-          <br>
+          <%elsif @group.member1id==nil || @group.member2id==nil || @group.member3id==nil || @group.member4id==nil%>
+            <div class="well">
+              <p style="text-align:center">Click "join this group" to finish joining "<%=@group.name%>" group</p>
+            </div>
+            <%= render'form2' %>
+            <br>
 
-        <%elsif @group.member1id==nil || @group.member2id==nil || @group.member3id==nil || @group.member4id==nil%>
-          <div class="well">
-            <p style="text-align:center">Click "join this group" to finish joining "<%=@group.name%>" group</p>
-          </div>
-          <%= render'form2' %>
-          <br>
+          <%else%>
+            <div class="well">
+              <p style="text-algin:center"> This group is full</p>
+            </div>
+            <br>
+          <%end%>
 
         <%else%>
           <div class="well">
-            <p style="text-algin:center"> This group is full</p>
+            <p style="text-algin:center"> Please log in before editing group</p>
           </div>
           <br>
         <%end%>
-
-      <%else%>
-        <div class="well">
-          <p style="text-algin:center"> Please log in before editing group</p>
-        </div>
-        <br>
-      <%end%>
+      </div>
+      <div class="col-sm-2"></div>
     </div>
   </div>  <!-- end row -->
 </div><!-- end groupEdit container -->
