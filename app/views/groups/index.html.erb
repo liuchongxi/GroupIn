@@ -1,55 +1,182 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = "Groups" %>
 
-<h1>Here is all the groups, you can select the ones you like :p </h1>
+<div class="groupIndex container">
+ <!--  <p id="notice"><%= notice %></p> -->
+  <h1>Here is all the groups, you can select the ones you like :p </h1>
+  <p>Create your own gorup:<%= link_to ' New Group', new_group_path %></p>
+  <br>
+ 
+  <% @groups.each do |group| %>
+    <% if group.activity_type== "study"%>
+      <div class="row">
+      <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-12">
+        <div class="row">
+          <div class="col-lg-1 col-lg-offset-1">
+            <img class="icon" src="assets/studyGroupSide.png" alt="Icon">
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-9">
+            <h3><%= group.name %></h3>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Activity time: <%= group.time %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Location: <%= group.location %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Owner: <%= group.group_owner %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Create time: <%= group.created_at%></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-11 col-lg-offset-1">
+                  <p>Description: <%= group.description %></p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-7"></div>
+                <div class="col-lg-5">
+                  <%= link_to 'Show', group, :class => "btn btn-primary"%>
+                  <% if logged_in?%>
+                    <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+                      <%= link_to 'Edit the group', edit_group_path(group),:class => "btn btn-info" %>
+                      <%= link_to 'Destroy', group,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
+                      <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
+                        <%= link_to 'Join this group', edit_group_path(group), :class => "btn btn-success"%>
+                      <%end%>
+                    <%else%>
+                      <%= link_to 'Quit this group', edit_group_path(group),:class => "btn btn-warning" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>  
+    </div><!-- row end --> 
+    <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Time</th>
-      <th>Activity type</th>
-      <th>Location</th>
-      <th>Group owner</th>
-      <!-- <th>Member1</th>
-      <th>Member2</th>
-      <th>Member3</th>
-      <th>Member4</th> -->
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <% elsif group.activity_type== "sports"%>
+      <div class="row">
+      <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-12">
+        <div class="row">
+          <div class="col-lg-1 col-lg-offset-1">
+            <img class="icon" src="assets/sportGroupSide.png" alt="Icon">
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-9">
+            <h3><%= group.name %></h3>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Activity time: <%= group.time %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Location: <%= group.location %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Owner: <%= group.group_owner %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Create time: <%= group.created_at%></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-11 col-lg-offset-1">
+                  <p>Description: <%= group.description %></p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-7"></div>
+                <div class="col-lg-5">
+                  <%= link_to 'Show', group, :class => "btn btn-primary"%>
+                  <% if logged_in?%>
+                    <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+                      <%= link_to 'Edit the group', edit_group_path(group),:class => "btn btn-info" %>
+                      <%= link_to 'Destroy', group,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
+                      <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
+                        <%= link_to 'Join this group', edit_group_path(group), :class => "btn btn-success"%>
+                      <%end%>
+                    <%else%>
+                      <%= link_to 'Quit this group', edit_group_path(group),:class => "btn btn-warning" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>  
+    </div><!-- row end --> 
+    <br>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.time %></td>
-        <td><%= group.activity_type %></td>
-        <td><%= group.location %></td>
-        <td><%= group.group_owner %></td>
-        <!-- <td><%= group.member1 %></td>
-        <td><%= group.member2 %></td>
-        <td><%= group.member3 %></td>
-        <td><%= group.member4 %></td> -->
-        <td><%= group.description %></td>
-        <td><%= link_to 'Show', group, {:style=>'color:blue;', :class => "css_class"} %></td>
-        <% if logged_in?%>
-          <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
-            <td><%= link_to 'Edit the group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"} %></td>
-            <td><%= link_to 'Destroy', group, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></td>
-          <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
-            <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
-              <td><%= link_to 'Join this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
-            <%end%>
-          <%else%>
-            <td><%= link_to 'Quit this group', edit_group_path(group), {:style=>'color:blue;', :class => "css_class"}%></td>
-          <% end %>
-        <% end %>
-      </tr>
+    <% elsif group.activity_type== "food"%>
+      <div class="row">
+      <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-12">
+        <div class="row">
+          <div class="col-lg-1 col-lg-offset-1">
+            <img class="icon" src="assets/foodGroupSide.png" alt="Icon">
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-9">
+            <h3><%= group.name %></h3>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Activity time: <%= group.time %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Location: <%= group.location %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                  <p>Owner: <%= group.group_owner %></p>
+                </div>
+                 <div class="col-lg-5 col-lg-offset-1">
+                  <p>Create time: <%= group.created_at%></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-11 col-lg-offset-1">
+                  <p>Description: <%= group.description %></p>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-7"></div>
+                <div class="col-lg-5">
+                  <%= link_to 'Show', group, :class => "btn btn-primary"%>
+                  <% if logged_in?%>
+                    <% if loggedin_user.admin? || group.user_id==loggedin_user.id%>
+                      <%= link_to 'Edit the group', edit_group_path(group),:class => "btn btn-info" %>
+                      <%= link_to 'Destroy', group,:class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%elsif loggedin_user.id!=group.member1id && loggedin_user.id!=group.member2id && loggedin_user.id!=group.member3id &&loggedin_user.id!=group.member4id%>
+                      <%if group.member1id==nil || group.member2id==nil || group.member3id==nil || group.member4id==nil%>
+                        <%= link_to 'Join this group', edit_group_path(group), :class => "btn btn-success"%>
+                      <%end%>
+                    <%else%>
+                      <%= link_to 'Quit this group', edit_group_path(group),:class => "btn btn-warning" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>  
+    </div><!-- row end --> 
+    <br>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+  <% end %>
+</div><!-- groupIndex container end -->
 
-<%= link_to 'New Group', new_group_path, {:style=>'color:blue;', :class => "css_class"} %>
+

@@ -14,7 +14,12 @@
  *= require_self
  */
 
-
+/*notice*/
+#notice{
+  color: red;
+  font-family: Montserrat, sans-serif;
+  
+}
 
 /*Header*/
   /*Nav*/

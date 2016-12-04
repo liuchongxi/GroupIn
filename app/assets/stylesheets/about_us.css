@@ -1,0 +1,45 @@
+/*// Place all the styles related to the about_us controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
+
+.siteInfo {
+	text-align: center;
+	padding: 80px 120px;
+
+}
+.contact{
+	text-align: center;
+	padding: 80px 120px;
+}
+.FAQ{
+	text-align: center;
+	padding: 80px 120px;
+}
+.person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 90%;
+      height: 90%;
+      opacity: 0.7;
+  }
+.person:hover {
+      border-color: #e1e1e1;
+  }
+.contact h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+}
+.siteInfo h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+.FAQ h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
