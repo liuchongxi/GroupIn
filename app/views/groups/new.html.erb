@@ -1,8 +1,27 @@
-<% if logged_in? %>
-<h1>New Group</h1>
-<%= render 'form' %>
+<% @page_title = "Groups-Create" %>
 
-<%= link_to 'Back', groups_path,  {:style=>'color:blue;', :class => "css_class"} %>
-<% else %>
-<p style="color:red;font-size:200%;"> Please log in before creating  group</p>
-<%end%>
+
+<div class="groupCreate container">
+  <div class="row">
+    <div class="col-sm-12">
+		<% if logged_in? %>
+
+			<div class="form-horizontal">
+				<fieldset>
+				  <legend><h3>Create Gorup</h3></legend>
+				  <%= render 'form' %>
+				 <!--  <%= link_to 'Show', @group, :class => "css_class"%>
+				  <%= link_to 'Back', groups_path, :class => "css_class"%> -->
+				</fieldset>
+			</div>
+			<br>
+
+		<% else %>
+			<div class="well">
+		    	<p style="text-algin:center"> Please log in before editing group</p>
+		    </div>
+		    <br>
+		<%end%>
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end groupCreate container -->

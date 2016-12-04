@@ -1,73 +1,41 @@
-<% if logged_in? %>
-  <%if loggedin_user.admin? %>
-  <div class="Ad_Index">
-    <h1>    Ad Requests</h1>
+<% @page_title = "Ad_Request_Index" %>
 
-    <!--<%= link_to("Add New Requesrs", new_ad_request_path, {:style=>'color:blue;', :class => "css_class"}) %>-->
+<div class="Ad_Request_Index container">
+  <% if logged_in? %>
+    <%if loggedin_user.admin? %>
+      <h1>Ad Requests</h1>
+        <br><br>
+        <% @requests.each do |request| %>
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="Ad_request_index_content col-sm-5">
+              <h3><%= request.ad_name %></h3>
+              <p>Name: <%= request.first_name%>, <%= request.last_name %></p>
+              <p>Phone Number: <%= request.phone_num %></p>
+              <p>Email: <%= request.email%></p>
+            </div>
+            <div class=" Ad_request_index_button col-sm-5">
+              <%= link_to("Show", ad_request_path(request), :class => "btn btn-primary") %>
+              <%= link_to("Delete", delete_ad_request_path(request), :class => "btn btn-danger") %>  
+            </div>
+          </div>
+        </div>
+          
+        <% end %>
 
-    <table class="listing" summary="Request list">
-      <tr class="header">
-        <th>Topic</th>
-        <th>F.Name</th>
-        <th>L.Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-      </tr>
-
-
-      <% @requests.each do |request| %>
-
-      <tr>
-        <td><%= request.ad_name %></td>
-        <td><%= request.first_name %></td>
-        <td><%= request.last_name %></td>
-        <td><%= request.phone_num %></td>
-         <td><%= request.email%></td>
-        <td class="actions">
-        	<!-- Three ways to write the URL
-
-        	1. 'subject/#{subject.id}'
-        	2. {:controller => 'subject', :action => 'show', :id => subject.id}
-        	3. see what is in URL
-        	   URL helper, .id is optional
-
-        	-->
-          <%= link_to("Show", ad_request_path(request), {:style=>'color:blue;', :class => "css_class"}) %>
-
-
-
-
-        </td>
-
-
-         <td class="actions">
-          <!-- Three ways to write the URL
-
-          1. 'subject/#{subject.id}'
-          2. {:controller => 'subject', :action => 'show', :id => subject.id}
-          3. see what is in URL
-             URL helper, .id is optional
-
-          -->
-          <%= link_to("Delete", delete_ad_request_path(request), {:style=>'color:blue;', :class => "css_class"}) %>
-
-
-
-
-        </td>
-
-
-
-      </tr>
-
-      <% end %>
-
-
-    </table>
-  </div>
+    <%else%>
+      <div class="well">
+        <p style="text-align:center">This page can only be viewed by admin user</p>
+      </div>
+    <%end%>
   <%else%>
-    <p style="color:red;font-size:200%;"> This page can only be viewed by admin user</p>
-  <%end%>
-<%else%>
-  <p style="color:red;font-size:200%;"> Please log in before you sending ad request</p>
-<%end%>
+    <div class="well">
+      <p style="text-align:center">Please log in before you sending ad request</p>
+    </div>
+  <%end%> 
+<br><br> 
+</div><!-- Ad_Request_Index container end -->
+
+
+

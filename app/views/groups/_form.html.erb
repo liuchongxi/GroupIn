@@ -9,25 +9,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :required=>'r' %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name, :class => "col-sm-2 control-label", :for =>"inputName" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, :required=>'r',:class => "form-control", :id => "inputName" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.datetime_select :time %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :time, :class => "col-sm-2 control-label", :for =>"inputTime" %>
+      <div class="col-sm-10">
+        <%= f.datetime_select :time, :class => "form-control", :id => "inputTime"  %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :activity_type %><br>
-    <%= f.select :activity_type ,["sports", "food", "study"], :required=> 'r'%>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :activity_type, :class => "col-sm-2 control-label", :for =>"inputGroupType"  %>
+      <div class="col-sm-10">
+        <%= f.select :activity_type ,["sports", "food", "study"], :required=> 'r', :id => "inputGroupType"%>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location, :required=>'r' %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :location, :class => "col-sm-2 control-label", :for =>"inputLocation"  %>
+      <div class="col-sm-10">
+        <%= f.text_field :location, :required=>'r', :class => "form-control", :id => "inputLocation" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
-    <%= f.hidden_field :group_owner, :value => fullname%>
+
+  <div class="form-group">
+    <div class="field">
+      <% fullname=loggedin_user.first_name+ " "+loggedin_user.last_name%>
+      <%= f.hidden_field :group_owner, :value => fullname%>
+    </div>
   </div>
   <!-- <div class="field">
     <%= f.label :member1 %>(Optional)<br>
@@ -45,12 +67,21 @@
     <%= f.label :member4 %>(Optional)<br>
     <%= f.text_field :member4 %>
   </div> -->
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :required=>'r', rows: "5", cols: "35"%>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :description, :class => "col-sm-2 control-label", :for =>"inputDescription"  %>
+      <div class="col-sm-10">
+        <%= f.text_area :description, :required=>'r', rows: "5", cols: "35", :class => "form-control", :id => "inputDescription"%>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="actions">
+      <div class="col-sm-10 col-sm-offset-2">
+        <%= f.submit :class => "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>
 <%end%>

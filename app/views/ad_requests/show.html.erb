@@ -1,40 +1,62 @@
-<div class="requests show">
-  <h1>Show Request Detail</h1>
+<% @page_title = "Ad_Request-show" %>
 
-  <table summary="Request detail view">
-    <tr>
-      <th>Topic</th>
-      <td><%= @request.ad_name %></td>
-    </tr>
-    <tr>
-      <th>F.Name</th>
-      <td><%= @request.first_name %></td>
-    </tr>
-    <tr>
-      <th>L.Name</th>
-      <td><%= @request.last_name %></td>
-    </tr>
-    <tr>
-      <th>Phone</th>
-      <td><%= @request.phone_num %></td>
-    </tr>
-    <tr>
-      <th>email</th>
-      <td><%= @request.email %></td>
-    </tr>
-    <tr>
-      <th>Created</th>
-      <td><%= @request.created_at %></td>
-    </tr>
-    <tr>
-      <th>Updated</th>
-      <td><%= @request.updated_at %></td>
-    </tr>
-    <tr>
-      <th>Detail</th>
-      <td><%= @request.request_detail %></td>
-    </tr>
-  </table>
+<div class="Ad_Request-show container">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if logged_in? %>
+        <%if loggedin_user.admin? %>
+          <div class="requests show">
+            <h1>Show Request Detail</h1>
+
+            <table summary="Request detail view">
+              <tr>
+                <th>Topic</th>
+                <td><%= @request.ad_name %></td>
+              </tr>
+              <tr>
+                <th>F.Name</th>
+                <td><%= @request.first_name %></td>
+              </tr>
+              <tr>
+                <th>L.Name</th>
+                <td><%= @request.last_name %></td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td><%= @request.phone_num %></td>
+              </tr>
+              <tr>
+                <th>email</th>
+                <td><%= @request.email %></td>
+              </tr>
+              <tr>
+                <th>Created</th>
+                <td><%= @request.created_at %></td>
+              </tr>
+              <tr>
+                <th>Updated</th>
+                <td><%= @request.updated_at %></td>
+              </tr>
+              <tr>
+                <th>Detail</th>
+                <td><%= @request.request_detail %></td>
+              </tr>
+            </table>
+          </div>
+          
+        <%else%>
+          <div class="well">
+            <p style="text-align:center">This page can only be viewed by admin user</p>
+          </div>
+        <%end%>
+
+      <%else%>
+        <div class="well">
+          <p style="text-align:center">Please log in before you sending ad request</p>
+        </div>
+      <%end%>
+   </div>
+  </div>  <!-- end row -->
+</div><!-- end Ad_Request-delete container -->
 
 
-</div>

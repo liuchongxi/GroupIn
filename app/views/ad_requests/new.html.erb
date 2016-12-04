@@ -1,43 +1,72 @@
 <!--<%= link_to("<< Back to List", ad_requests_path, {:style=>'color:blue;', :class => "css_class"}) %>-->
+<% @page_title = "Ad-Request" %>
 
-  <div class="Request New">
-    <h1>Create Request</h1>
+<div class="groupEdit container">
+  <div class="row">
+    <div class="col-sm-12">
+      <legend>
+        <h3>Creat Request</h3>
+        <p>Please fill in the required information, our admins will contact you as soon as possible :)</p>
+      </legend>
 
-    <p>Please fill in the required information, our admins will contact you as soon as possible :)</p>
+      <div class="form-horizontal">
+        <%= form_for(@request, :url => ad_requests_path, :method => 'post') do |f| %>
+          <div class="form-group">
+            <%= f.label :"Ad Name", :class => "col-sm-2 control-label", :for =>"inputAdName" %>
+            <div class="col-sm-10">
+              <%= f.text_field :ad_name, :required => true, :class => "form-control", :id => "inputAdName" %>
+            </div>
+          </div>
 
-    <%= form_for(@request, :url => ad_requests_path, :method => 'post') do |f| %>
+          <div class="form-group">
+            <%= f.label :"First Name", :class => "col-sm-2 control-label", :for =>"inputFirstName" %>
+            <div class="col-sm-10">
+              <%= f.text_field :first_name, :required => true, :class => "form-control", :id => "inputFirstName" %>
+            </div>
+          </div>
 
-      <table summary="Request form fields">
-        <tr>
-          <th>Ad Name</th>
-          <td><%= f.text_field(:ad_name, :required => true) %></td>
-        </tr>
-        <tr>
-          <th>First Name</th>
-          <td><%= f.text_field(:first_name, :required => true) %></td>
-        </tr>
-        <tr>
-          <th>Last Name</th>
-          <td><%= f.text_field(:last_name, :required => true) %></td>
-        </tr>
-        <tr>
-          <th>Phone Number</th>
-          <td><%= f.text_field(:phone_num, :required => true) %></td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td><%= f.text_field(:email, :required => true) %></td>
-          <td>Please enter correct email format, i.e @domain.com</td>
-        </tr>
-        <tr>
-          <th>Detail</th>
-          <td><%= f.text_area(:request_detail, :rows => 5, :required => true) %></td>
-        </tr>
-      </table>
+           <div class="form-group">
+            <%= f.label :"Last Name", :class => "col-sm-2 control-label", :for =>"inputLastName" %>
+            <div class="col-sm-10">
+              <%= f.text_field :last_name, :required => true, :class => "form-control", :id => "inputLastName" %>
+            </div>
+          </div>
 
-      <div class="form-buttons">
-        <%= f.submit("Create Subject") %>
+          <div class="form-group">
+            <%= f.label :"Phone Number", :class => "col-sm-2 control-label", :for =>"inputPhone" %>
+            <div class="col-sm-10">
+              <%= f.text_field :phone_num, :required => true, :class => "form-control", :id => "inputPhone" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Email, :class => "col-sm-2 control-label", :for =>"inputEmail" %>
+            <div class="col-sm-10">
+              <%= f.text_field :email, :required => true, :class => "form-control", :id => "inputEmail" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :Detail, :class => "col-sm-2 control-label", :for =>"inputDetail" %>
+            <div class="col-sm-10">
+              <%= f.text_area :request_detail, :rows => 5, :required => true, :class => "form-control", :id => "inputDetail" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+               <%= f.submit("Create Subject", :class => "btn btn-primary") %>
+            </div>
+          </div>
+        <% end %>
       </div>
+ 
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end groupEdit container -->
 
-    <% end %>
-  </div>
+  
+
+    
+
+

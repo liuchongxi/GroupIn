@@ -1,23 +1,53 @@
-<% if logged_in? %>
-  <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
-    <h1>Editing Group</h1>
-    <p>You are group owner, and you can edit for this group</p>
-    <%= render 'form' %>
-    <%= link_to 'Show', @group, {:style=>'color:blue;', :class => "css_class"}%> |
-    <%= link_to 'Back', groups_path, {:style=>'color:blue;', :class => "css_class"} %>
+<% @page_title = "Groups-Edit" %>
 
-  <%elsif @group.member1id==loggedin_user.id || @group.member2id==loggedin_user.id || @group.member3id==loggedin_user.id || @group.member4id==loggedin_user.id%>
-    <p style="font-size:200%;">Click "Quit this group" to Quit the "<%=@group.name%>" group</p>
-    <%= render'form3' %>
+<div class="groupEdit container">
+  <div class="row">
+    <div class="col-sm-12">
 
-  <%elsif @group.member1id==nil || @group.member2id==nil || @group.member3id==nil || @group.member4id==nil%>
-    <p style="font-size:200%;">Click "join this group" to finish joining "<%=@group.name%>" group</p>
-    <%= render'form2' %>
+      <% if logged_in? %>
+        <% if loggedin_user.admin? || @group.user_id==loggedin_user.id%>
+          <div class="form-horizontal">
+            <fieldset>
+              <legend><h3>Editing Gorup</h3></legend>
+              <p>You are group owner, and you can edit this group</p>
+              <%= render 'form' %>
+             <!--  <%= link_to 'Show', @group, :class => "css_class"%>
+              <%= link_to 'Back', groups_path, :class => "css_class"%> -->
+            </fieldset>
+          </div>
+          <br>
 
-  <%else%>
-    <p style="color:red;font-size:200%;"> This group is full</p>
-  <%end%>
+        <%elsif @group.member1id==loggedin_user.id || @group.member2id==loggedin_user.id || @group.member3id==loggedin_user.id || @group.member4id==loggedin_user.id%>
+          <div class="well">
+            <p style="text-align:center;">Click "Quit this group" to Quit the "<%=@group.name%>" group</p>
+          </div> 
+          <%= render'form3' %>
+          <br>
 
-<%else%>
-  <p style="color:red;font-size:200%;"> Please log in before editing group</p>
-<%end%>
+        <%elsif @group.member1id==nil || @group.member2id==nil || @group.member3id==nil || @group.member4id==nil%>
+          <div class="well">
+            <p style="text-align:center">Click "join this group" to finish joining "<%=@group.name%>" group</p>
+          </div>
+          <%= render'form2' %>
+          <br>
+
+        <%else%>
+          <div class="well">
+            <p style="text-algin:center"> This group is full</p>
+          </div>
+          <br>
+        <%end%>
+
+      <%else%>
+        <div class="well">
+          <p style="text-algin:center"> Please log in before editing group</p>
+        </div>
+        <br>
+      <%end%>
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end groupEdit container -->
+
+
+
+
