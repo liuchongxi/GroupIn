@@ -5,37 +5,30 @@
     <div class="col-sm-12">
      
           <div class="requests show">
-            <h1>Show Request Detail</h1>
+            <legend><h1>Show Request Detail</h1></legend>
 
-            <table summary="Request detail view">
+            <table class="table table-striped" summary="Request detail view">
               <tr>
                 <th>Topic</th>
                 <td><%= @request.ad_name %></td>
               </tr>
               <tr>
-                <th>F.Name</th>
-                <td><%= @request.first_name %></td>
-              </tr>
-              <tr>
-                <th>L.Name</th>
-                <td><%= @request.last_name %></td>
+                <th>Name</th>
+                <td><%= @request.first_name %> <%= @request.last_name %></td>
               </tr>
               <tr>
                 <th>Phone</th>
                 <td><%= @request.phone_num %></td>
               </tr>
               <tr>
-                <th>email</th>
+                <th>Contact Email</th>
                 <td><%= @request.email %></td>
               </tr>
               <tr>
-                <th>Created</th>
+                <th>Created Time</th>
                 <td><%= @request.created_at %></td>
               </tr>
-              <tr>
-                <th>Updated</th>
-                <td><%= @request.updated_at %></td>
-              </tr>
+              
               <tr>
                 <th>Detail</th>
                 <td><%= @request.request_detail %></td>

@@ -1,25 +1,55 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <h1>Login</h1>
-  <div class="errormessage">
-  <%= flash.now[:error]%>
-  </div>
-  <div class="wholetext">
-    <%= f.label :email %>
-    <div class="field">
-    <%= f.email_field :email , :required=> 'r'%>
-    </div>
-    <br>
-    <%= f.label :password %>
-    <div class="field">
-    <%= f.password_field :password , :required=> 'r'%>
-    </div>
-    <br>
-    <%= f.label :remember_me, class: "checkbox inline" do %>
-      <%= f.check_box :remember_me %>
-      <span>Keep me logged in</span>
-    <% end %>
-    </div>
-    <%= f.submit "Login"%>
-  </div>
+<% @page_title = "LogIN" %>
 
-<% end %>
+
+<div class="LogIN container"><br><br><br><br>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= form_for(:session, url: login_path) do |f| %>
+            <div class="text-center"><h1>Login</h1></div>
+            <%= flash.now[:error]%>
+
+            <form>
+              <div class="form-group">
+                <%= f.label :Email %>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                  <%= f.email_field :email , :required=> 'r', :class => "form-control", :placeholder => "Username"%>
+                </div>
+              </div>
+
+              <div class="form-group">
+                 <%= f.label :password %>
+                    <div class="input-group"><span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-star"></i></span>
+                    <%= f.password_field :password , :required=> 'r', :class => "form-control", :placeholder => "Password"%>
+                    </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :remember_me, class: "checkbox inline" do %>
+                  <%= f.check_box :remember_me, :style => "margin-left:5px;" %>
+                  <span style="margin-left:25px;">Keep me logged in</span>
+                <% end %>
+              </div>
+
+             <%= f.submit "Login", :class =>"btn btn-primary" %>
+            </form>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"></div>
+
+    </div>
+
+  </div>  <!-- end row -->
+  <br><br><br><br><br><br>
+</div><!-- end MessageCreate container -->
+
+
+
