@@ -28,8 +28,34 @@ class AdRequestTest < ActiveSupport::TestCase
   assert_not @ad.valid?
   end
 
-  test "eamil should have correct format" do
-  @ad.email = "a@sss"
+  test "should have value for phone number" do
+  @ad.phone_num = " "
+  assert_not @ad.valid?
+  end
+
+  test "phone number should have a maximum length" do
+  @ad.phone_num = "a" * 13
+  assert_not @ad.valid?
+  end
+
+  test "email should have correct format" do
+  @ad.email = "a@ssss"
+  assert_not @ad.valid?
+  end
+
+  test "email should be unique" do
+  ad1 = AdRequest.create(first_name: "example", last_name: "example", phone_num: "12345", email: "message@abc.ca", request_detail: "mytext", ad_name: "abc")
+  ad2 = AdRequest.new(first_name: "example", last_name: "example", phone_num: "12345", email: "MESSAGE@ABC.CA", request_detail: "mytext", ad_name: "abc")
+  assert_not ad2.valid?
+  end
+
+  test "should have value for request_detail" do
+  @ad.request_detail = " "
+  assert_not @ad.valid?
+  end
+
+  test "request_detail should have a maximum length" do
+  @ad.request_detail = "a" * 501
   assert_not @ad.valid?
   end
 

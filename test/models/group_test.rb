@@ -20,6 +20,16 @@ class GroupTest < ActiveSupport::TestCase
    assert_not @group.valid?
    end
 
+   test "name should be unique" do
+   group1 = Group.create(name: "Example", time: "2016-12-19 08:43:00", activity_type: "sports", location: "sfu",
+                    group_owner: "owner", member1: "member1", member2: "member2", member3: "member3", member4: "member4",
+                    description: "play soccer", user_id: "0", member1id: "1", member2id: "2", member3id: "3", member4id: "4")
+   group2 = Group.new(name: "EXAMPLE", time: "2016-12-19 08:43:00", activity_type: "sports", location: "sfu",
+                    group_owner: "owner", member1: "member1", member2: "member2", member3: "member3", member4: "member4",
+                    description: "play soccer", user_id: "0", member1id: "1", member2id: "2", member3id: "3", member4id: "4")
+   assert_not group2.valid?
+   end
+
    test "should have value for time" do
    @group.time = " "
    assert_not @group.valid?

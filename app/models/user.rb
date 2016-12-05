@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, length: {maximum: 50 } # first_name has maximum length of 50 characters.
   validates :last_name, presence: true, length: {maximum: 50 } # last_name has maximum length of 50 characters.
   validates :email, uniqueness: {case_sensitive: false}, presence: true
-  validates_format_of :email, :message => ":Please use your sfu eamil address :)", :with => /\A([^@\s]+)@((?:[-s-s][-f-f][-u-u]\.[-c-c][-a-a]))\Z/i
+  validates_format_of :email, :message => ":Please use your sfu email address :)", :with => /\A([^@\s]+)@((?:[-s-s][-f-f][-u-u]\.[-c-c][-a-a]))\Z/i
   validates :password, :length => { :minimum => 5, :maximum => 10 }, :presence=>true, :confirmation =>true
   validates :password_confirmation, :presence=>true
 

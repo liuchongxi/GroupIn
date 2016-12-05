@@ -16,13 +16,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should create user" do
-  #   assert_difference('User.count') do
-  #     post :create, user: { email: "abddc@sfu.ca", first_name: @user.first_name, gender: @user.gender, last_name: @user.last_name, major: @user.major, password_digest: @user.password_digest }
-  #   end
-  #
-  #   assert_redirected_to user_path(assigns(:user))
-  # end
+   test "should create user" do
+     assert_difference('User.count') do
+      post :create, user: { email: "abddc@sfu.ca", first_name: @user.first_name, gender: "male", last_name: @user.last_name, major: @user.major, password: "11111", password_confirmation: "11111",  password_digest: @user.password_digest }
+     end
+
+     assert_redirected_to user_path(assigns(:user))
+   end
 
   test "should show user" do
     get :show, id: @user
@@ -34,10 +34,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should update user" do
-  #   patch :update, id: @user, user: { email: @user.email, first_name: @user.first_name, gender: @user.gender, last_name: @user.last_name, major: @user.major, password: @user.password_digest }
-  #   assert_redirected_to user_path(assigns(:user))
-  # end
+   test "should update user" do
+     patch :update, id: @user, user: { email: "abddc@sfu.ca", first_name: @user.first_name, gender: "male", last_name: @user.last_name, major: @user.major, password: "11111", password_confirmation: "11111",  password_digest: @user.password_digest }
+     assert_redirected_to user_path(assigns(:user))
+   end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do

@@ -3,6 +3,7 @@ require 'test_helper'
 class GroupsControllerTest < ActionController::TestCase
   setup do
     @group = groups(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
@@ -16,14 +17,15 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should create group" do
-  #   assert_difference('Group.count') do
-  #     post :create, group: { user_id: @group.user_id, activity_type: @group.activity_type, description: @group.description, group_owner: @group.group_owner, location: @group.location, member1: @group.member1,
-  #        member2: @group.member2, member3: @group.member3, member4: @group.member4, name: @group.name, time: @group.time }
-  #   end
-  #
-  #   assert_redirected_to group_path(assigns(:group))
-  # end
+#  test "should create group" do
+#    @loggedin_user = @user
+#     assert_difference('Group.count') do
+#       post :create, group: { activity_type: @group.activity_type, description: @group.description, group_owner: @group.group_owner, location: @group.location, member1: @group.member1,
+#          member2: @group.member2, member3: @group.member3, member4: @group.member4, name: @group.name, time: @group.time, user_id: @group.user_id }
+#     end
+#
+#     assert_redirected_to group_path(assigns(:group))
+#   end
 
   test "should show group" do
     get :show, id: @group
