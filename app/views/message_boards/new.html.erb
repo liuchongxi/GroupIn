@@ -1,8 +1,26 @@
-<% if logged_in? %>
-  <h1>New Message</h1>
-  <%= render 'form' %>
+<% @page_title = "Message-Create" %>
 
-  <%= link_to 'Back', message_boards_path,  {:style=>'color:blue;', :class => "css_class"} %>
-  <% else %>
-  <p style="color:red;font-size:200%;"> Please log in before creating  message</p>
-<%end%>
+
+<div class="MessageCreate container">
+  <div class="row">
+    <div class="col-sm-12">
+	<% if logged_in? %>
+	  <legend><h1>New Message</h1></legend>
+	  <%= render 'form' %>
+
+	  <%= link_to 'Back', message_boards_path,  { :class => "btn btn-primary"} %>
+	  <% else %>
+	  <p style="color:red;font-size:200%;"> Please log in before creating  message</p>
+	<%end%>
+
+      
+      <br><br>
+
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end MessageCreate container -->
+
+
+
+
+

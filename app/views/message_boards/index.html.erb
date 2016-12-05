@@ -1,29 +1,42 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = "Message" %>
 
-<h1>ALL Messages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Sender</th>
-      <th>for group</th>
-      <th>Message</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="Message container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>ALL Messages</h1>
 
-  <tbody>
-    <% @message_boards.each do |message_board| %>
-      <tr>
-        <td><%= message_board.sender %></td>
-        <td><%= message_board.group_name %></td>
-        <td><%= message_board.message %></td>
-        <td><%= link_to 'Show', message_board, {:style=>'color:blue;', :class => "css_class"} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%= link_to 'New Message', new_message_board_path, :class => "btn btn-primary" %>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Sender</th>
+            <th>for group</th>
+            <th>Message</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @message_boards.each do |message_board| %>
+            <tr>
+              <td><%= message_board.sender %></td>
+              <td><%= message_board.group_name %></td>
+              <td><%= message_board.message %></td>
+              <td><%= link_to 'Show', message_board, { :class => "btn btn-info"} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<%= link_to 'New Message', new_message_board_path, {:style=>'color:blue;', :class => "css_class"}%>
+      
+      <br><br>
+
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end Message container -->
+
+
+
+

@@ -1,14 +1,31 @@
-<%if logged_in?%>
-  <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin? %>
-    <h1>Editing Message</h1>
+<% @page_title = "Message-Edit" %>
 
-    <%= render 'form2' %>
 
-    <%= link_to 'Show', @message_board, {:style=>'color:blue;', :class => "css_class"} %> |
-    <%= link_to 'Back', message_boards_path, {:style=>'color:blue;', :class => "css_class"} %>
-  <%else%>
-    <p style="color:red;font-size:200%;"> You do not have access to edit this message</p>
-  <%end%>
-<%else%>
-  <p style="color:red;font-size:200%;"> Please log in before editing message</p>
-<%end%>
+<div class="MessageEdit container">
+  <div class="row">
+    <div class="col-sm-12">
+		<%if logged_in?%>
+		  <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin? %>
+		    <legend><h1>Editing Message</h1></legend>
+
+		    <%= render 'form2' %>
+
+		    <%= link_to 'Back', message_boards_path, { :class => "btn btn-primary"} %>
+		  <%else%>
+		    <p style="color:red;font-size:200%;"> You do not have access to edit this message</p>
+		  <%end%>
+		<%else%>
+		  <p style="color:red;font-size:200%;"> Please log in before editing message</p>
+		<%end%>
+      <br><br>
+
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end MessageCreate container -->
+
+
+
+
+
+
+

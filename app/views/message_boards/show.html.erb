@@ -1,25 +1,43 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = "Message-show" %>
 
-<p>
-  <strong>Sender:</strong>
-  <%= @message_board.sender %>
-</p>
 
-<p>
-  <strong>for_group:</strong>
-  <%= @message_board.group_name %>
-</p>
+<div class="MessageShow container">
+  <div class="row">
+    <div class="well col-sm-12">
+      <p>
+        <strong>Sender:</strong>
+        <%= @message_board.sender %>
+      </p>
 
-<p>
-  <strong>Message:</strong>
-  <%= @message_board.message %>
-</p>
+      <p>
+        <strong>for_group:</strong>
+        <%= @message_board.group_name %>
+      </p>
 
-<%= link_to 'Back', message_boards_path, {:style=>'color:blue;', :class => "css_class"} %>
+      <p>
+        <strong>Message:</strong>
+        <%= @message_board.message %>
+      </p>
 
-<%if logged_in?%>
-  <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin?%>
-    <%= link_to 'Edit', edit_message_board_path(@message_board), {:style=>'color:blue;', :class => "css_class"} %> |
-    <%= link_to 'Destroy', @message_board, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %>
-  <%end%>
-<%end%>
+      <%= link_to 'Back', message_boards_path, { :class => "btn btn-primary"} %>
+
+      <%if logged_in?%>
+        <%if loggedin_user.id==@message_board.user_id || loggedin_user.admin?%>
+          <%= link_to 'Edit', edit_message_board_path(@message_board), { :class => "btn btn-info"} %> 
+          <%= link_to 'Destroy', @message_board, method: :delete,  :class => "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+        <%end%>
+      <%end%>
+
+      
+      <br><br>
+
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end MessageSHow container -->
+
+
+
+
+
+
+
