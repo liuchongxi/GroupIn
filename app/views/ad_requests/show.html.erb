@@ -3,8 +3,7 @@
 <div class="Ad_Request-show container">
   <div class="row">
     <div class="col-sm-12">
-      <% if logged_in? %>
-        <%if loggedin_user.admin? %>
+     
           <div class="requests show">
             <h1>Show Request Detail</h1>
 
@@ -44,17 +43,7 @@
             </table>
           </div>
           
-        <%else%>
-          <div class="well">
-            <p style="text-align:center">This page can only be viewed by admin user</p>
-          </div>
-        <%end%>
-
-      <%else%>
-        <div class="well">
-          <p style="text-align:center">Please log in before you sending ad request</p>
-        </div>
-      <%end%>
+      
    </div>
   </div>  <!-- end row -->
 </div><!-- end Ad_Request-delete container -->
