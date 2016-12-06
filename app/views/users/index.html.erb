@@ -1,10 +1,11 @@
+<% @page_title = "All users" %>
 <% if logged_in?%>
 <% if loggedin_user.admin? %>
-<p id="notice"><%= notice %></p>
 
+<div class="container">
 <h1>Listing Users</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>First name</th>
@@ -33,10 +34,10 @@
 </table>
 <br>
 
-<%= link_to 'New User', new_user_path, {:style=>'color:blue;', :class => "css_class"}%>
 <% else %>
 <p style="color:red; font-size:200%;"> Only admin user can view this page</p>
 <% end %>
 <% else %>
 <p style="color:red; font-size:200%;"> Please log in first before view this page(only admin user can view this page)</p>
+</div>
 <% end %>

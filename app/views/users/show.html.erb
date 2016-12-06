@@ -1,53 +1,60 @@
+<% @page_title = "Profile" %>
+<div class="container">
+  <div class="well">
+    <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <!-- <p>
+      <strong>Password:</strong>
+      <%= @user.password %>
+    </p> -->
 
-<!-- <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p> -->
+    <p>
+      <strong>Gender:</strong>
+      <%= @user.gender %>
+    </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
+    <p>
+      <strong>Major:</strong>
+      <%= @user.major %>
+    </p>
 
-<p>
-  <strong>Major:</strong>
-  <%= @user.major %>
-</p>
-
-<!-- <p><%= link_to 'Destroy', @user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
-<% if logged_in?%>
-  <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
-    <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> |
-    <p style="font-size:150%;"> <br>Here is all the groups you own</p>
-    <% @user.groups.each do |group| %>
-    <p><%= link_to 'View Group you own', group, {:style=>'color:blue;', :class => "css_class"}%></p>
-    <% end %>
-    <p style="font-size:150%;"> <br>Here is all the groups you joined</p>
-    <% @group.each do |grou| %>
-      <% if grou.member1id==@user.id || grou.member2id==@user.id ||grou.member3id==@user.id ||grou.member4id==@user.id%>
-        <p><%= link_to 'View Group you joined', grou, {:style=>'color:blue;', :class => "css_class"}%></p>
+    <!-- <p><%= link_to 'Destroy', @user, method: :delete, :style=>'color:blue;', :class => "css_class", data: { confirm: 'Are you sure?' } %></p> -->
+    <% if logged_in?%>
+      <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
+        <%= link_to 'Edit', edit_user_path(@user),{:style=>'color:blue;', :class => "css_class"}  %> 
+        <legend></legend>
+        <p style="font-size:150%;"> <br>Here is all the groups you own</p>
+        <% @user.groups.each do |group| %>
+        <p><%= link_to 'View Group you own', group, {:style=>'color:blue;', :class => "css_class"}%></p>
+        <% end %>
+        <legend></legend>
+        <p style="font-size:150%;"> <br>Here is all the groups you joined</p>
+        <legend></legend>
+        <% @group.each do |grou| %>
+          <% if grou.member1id==@user.id || grou.member2id==@user.id ||grou.member3id==@user.id ||grou.member4id==@user.id%>
+            <p><%= link_to 'View Group you joined', grou, {:style=>'color:blue;', :class => "css_class"}%></p>
+          <%end%>
+        <% end %>
+        <%if loggedin_user.admin?%>
+          <p style="font-size:150%;"> <br>Check or edit all users (admin privilege)</p>
+          <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
+        <%end%>
       <%end%>
-    <% end %>
-    <%if loggedin_user.admin?%>
-      <p style="font-size:150%;"> <br>Check or edit all users (admin privilege)</p>
-      <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
     <%end%>
-  <%end%>
-<%end%>
+ </div>
+</div>

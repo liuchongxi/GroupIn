@@ -1,16 +1,28 @@
+<% @page_title = "User-edit" %>
 <% if logged_in?%>
- <% if loggedin_user.admin? || @user.id==loggedin_user.id %>
-  <h1>Edit Password</h1>
+ 	<% if loggedin_user.admin? || @user.id==loggedin_user.id %>
+	 <div class="userEdit container">
+	  <div class="row">
+	    <div class="col-sm-12">
+	      <legend>
+	        <h3>Edit Password</h3>
+	      </legend>
 
-<%= render 'form' %>
-
-  <%= link_to 'Show', @user, {:style=>'color:blue;', :class => "css_class"} %> |
-  <%if loggedin_user.admin?%>
-  <%= link_to 'View all users', users_path, {:style=>'color:blue;', :class => "css_class"}  %>
-  <%end%>
- <%else%>
- <p style="color:red; font-size:200%;"> You do not have access for this page</p>
- <%end%>
+	      <%= render 'form' %>
+ 	<%else%>
+		<p style="color:red; font-size:200%;"> You do not have access for this page</p>
+	<%end%>
 <%else%>
-<p style="color:red; font-size:200%;"> Please log in before you edit your personal page</p>
+	<p style="color:red; font-size:200%;"> Please log in before you edit your personal page</p>
 <%end%>
+    </div>
+  </div>  <!-- end row -->
+</div><!-- end groupEdit container -->
+ 
+
+
+
+
+  
+  
+ 
