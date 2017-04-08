@@ -1,0 +1,7 @@
+I"X(function() {
+  $('.carousel').carousel({
+    interval: 2000
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,5 @@
+I"C(function() {
+  $($('.carousel').carousel());
+
+}).call(this);
+:ET

@@ -1,0 +1,8 @@
+I"i(function() {
+  $('.carousel').carousel({
+    interval: 200,
+    pasue: false
+  });
+
+}).call(this);
+:ET

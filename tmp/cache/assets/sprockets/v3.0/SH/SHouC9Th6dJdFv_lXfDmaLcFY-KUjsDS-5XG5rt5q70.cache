@@ -1,0 +1,7 @@
+I"J(function() {
+  carousel({
+    internver: 2000
+  });
+
+}).call(this);
+:ET
